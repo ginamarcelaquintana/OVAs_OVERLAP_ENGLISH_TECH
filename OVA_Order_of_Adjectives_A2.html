@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: Order of Adjectives (Nivel A2)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+        .nav-tabs {
+            display: flex;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.25s ease;
+            color: #475569;
+        }
+        .tab.active, .tab:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .rule-banner {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            margin: 18px 0;
+            letter-spacing: 0.5px;
+        }
+        .theory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .theory-table th, .theory-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .theory-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .example-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .quiz-option {
+            display: block;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 12px 14px;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .quiz-option:hover {
+            background: #e2e8f0;
+        }
+        .correct {
+            background-color: #15803d !important;
+            color: #ffffff !important;
+            border-color: #166534 !important;
+        }
+        .incorrect {
+            background-color: #b91c1c !important;
+            color: #ffffff !important;
+            border-color: #991b1b !important;
+        }
+        button.action-btn {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        button.action-btn:hover {
+            background-color: #334155;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: none;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-success {
+            background-color: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+        .feedback-error {
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+        .nav-footer {
+            text-align: right;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Objeto Virtual de Aprendizaje (OVA)</h1>
+        <p>The Order of Adjectives (El orden jerárquico de los adjetivos) — Nivel A2</p>
+    </header>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('inicio')">1. Inicio y Objetivos</div>
+        <div class="tab" onclick="switchTab('contenido')">2. Explicación Teórica</div>
+        <div class="tab" onclick="switchTab('practica')">3. Actividad Práctica</div>
+        <div class="tab" onclick="switchTab('evaluacion')">4. Evaluación</div>
+    </div>
+
+    <!-- SECCIÓN 1: INICIO Y OBJETIVOS -->
+    <div id="inicio" class="content-section active">
+        <h2>Bienvenido al módulo de sintaxis adjetival</h2>
+        <p>En inglés, cuando usamos más de un adjetivo para describir a un sustantivo, no podemos colocarlos de forma arbitraria; existe una jerarquía convencional fija determinada por la naturaleza semántica de cada palabra.</p>
+        
+        <div class="rule-banner">
+            Regla mnemotécnica: OSASCOMP (Opinion, Size, Age, Shape, Color, Origin, Material, Purpose)
+        </div>
+
+        <h3>Objetivos de Aprendizaje:</h3>
+        <ul>
+            <li><strong>Categorizar:</strong> Identificar la clase semántica de los adjetivos descriptivos (opinión, dimensión física, edad, forma, tonalidad cromática, procedencia geográfica, composición material y función/propósito).</li>
+            <li><strong>Estructurar:</strong> Aplicar la secuencia normativa canónica de adjetivos antepuestos al núcleo nominal.</li>
+            <li><strong>Ajustar determinantes:</strong> Discriminar el cambio morfofonológico del artículo indefinido (<em>a</em> frente a <em>an</em>) en función del primer adjetivo que inicia la serie.</li>
+        </ul>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('contenido')">Iniciar Lección Teórica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: CONTENIDO TEÓRICO -->
+    <div id="contenido" class="content-section">
+        <h2>Jerarquía Canónica de los Adjetivos en Inglés</h2>
+        <p>La regla general establece que los juicios valorativos y subjetivos anteceden a los rasgos físicos concretos, y estos a su vez preceden al origen, material y función:</p>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Categoría</th>
+                    <th>Definición y Rasgo</th>
+                    <th>Ejemplos Representativos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>1</strong></td>
+                    <td><strong>Opinion</strong> (Opinión)</td>
+                    <td>Juicio subjetivo o evaluativo del hablante.</td>
+                    <td><em>lovely, beautiful, comfortable, delicious</em></td>
+                </tr>
+                <tr>
+                    <td><strong>2</strong></td>
+                    <td><strong>Size</strong> (Tamaño)</td>
+                    <td>Dimensión, escala o magnitud física.</td>
+                    <td><em>small, large, big, tiny, huge</em></td>
+                </tr>
+                <tr>
+                    <td><strong>3</strong></td>
+                    <td><strong>Age</strong> (Edad / Antigüedad)</td>
+                    <td>Tiempo de existencia o condición temporal.</td>
+                    <td><em>old, young, modern, antique, new</em></td>
+                </tr>
+                <tr>
+                    <td><strong>4</strong></td>
+                    <td><strong>Shape</strong> (Forma)</td>
+                    <td>Configuración geométrica o contorno.</td>
+                    <td><em>round, square, oval, circular, rectangular</em></td>
+                </tr>
+                <tr>
+                    <td><strong>5</strong></td>
+                    <td><strong>Color</strong> (Color)</td>
+                    <td>Tonalidad cromática o matiz.</td>
+                    <td><em>red, brown, blue, black, golden</em></td>
+                </tr>
+                <tr>
+                    <td><strong>6</strong></td>
+                    <td><strong>Origin</strong> (Origen)</td>
+                    <td>Nacionalidad, región o procedencia geográfica.</td>
+                    <td><em>Italian, French, Colombian, American</em></td>
+                </tr>
+                <tr>
+                    <td><strong>7</strong></td>
+                    <td><strong>Material</strong> (Material)</td>
+                    <td>Materia prima de fabricación.</td>
+                    <td><em>leather, wooden, cotton, plastic, metal</em></td>
+                </tr>
+                <tr>
+                    <td><strong>8</strong></td>
+                    <td><strong>Purpose</strong> (Propósito)</td>
+                    <td>Uso final o función específica del objeto.</td>
+                    <td><em>dining (table), sleeping (bag), running (shoes)</em></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Ajuste Fonético del Artículo Indefinido (A / AN)</h2>
+        <div class="example-box">
+            <strong>¡Atención al artículo indefinido!</strong><br>
+            El artículo indefinido se selecciona exclusivamente según el sonido inicial del <strong>adjetivo que quede colocado inmediatamente después de él</strong>, no del sustantivo:<br>
+            * <em>An old car</em> → pero al anteponer un adjetivo de opinión: <strong>A</strong> <u>b</u>eautiful old car (porque <em>beautiful</em> comienza con sonido consonántico).<br>
+            * <em>A jacket</em> → pero con adjetivo que inicia en vocal: <strong>An</strong> <u>e</u>xpensive leather jacket.
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('practica')">Ir a la Actividad Práctica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: ACTIVIDAD PRÁCTICA -->
+    <div id="practica" class="content-section">
+        <h2>Actividad Práctica: Análisis y Ordenación Guiada</h2>
+        <p>Analice las siguientes oraciones con series de adjetivos desordenados. Determine la secuencia canónica antes de revelar la respuesta modelada.</p>
+
+        <!-- Ejercicio 1 Práctica (3 adjetivos) -->
+        <div class="question-card">
+            <p class="question-title">1. Situación práctica (3 adjetivos):</p>
+            <p>Oración: <em>She bought an [expensive / silk / blue] dress for the wedding.</em></p>
+            <button class="action-btn" onclick="toggleAnswer('prac1')">Ver Respuesta y Desglose Jerárquico</button>
+            <div id="prac1" class="feedback-box feedback-success">
+                <strong>Respuesta correcta:</strong> <em>She bought an expensive blue silk dress for the wedding.</em><br><br>
+                <em>Desglose:</em><br>
+                - <strong>expensive:</strong> Opinión (1)<br>
+                - <strong>blue:</strong> Color (5)<br>
+                - <strong>silk:</strong> Material (7)<br>
+                <em>Nota fonética:</em> Se conserva <em>an</em> porque <em>expensive</em> inicia con sonido vocálico.
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 Práctica (4 adjetivos con ajuste de artículo) -->
+        <div class="question-card">
+            <p class="question-title">2. Situación práctica (4 adjetivos con cambio fonético de artículo):</p>
+            <p>Oración: <em>They live in an [wooden / charming / Swiss / old] cottage in the mountains.</em></p>
+            <button class="action-btn" onclick="toggleAnswer('prac2')">Ver Respuesta y Desglose Jerárquico</button>
+            <div id="prac2" class="feedback-box feedback-success">
+                <strong>Respuesta correcta:</strong> <em>They live in a charming old Swiss wooden cottage in the mountains.</em><br><br>
+                <em>Desglose:</em><br>
+                - <strong>charming:</strong> Opinión (1)<br>
+                - <strong>old:</strong> Edad (3)<br>
+                - <strong>Swiss:</strong> Origen (6)<br>
+                - <strong>wooden:</strong> Material (7)<br>
+                <em>Nota fonética:</em> El artículo cambia de <em>an</em> a <strong>a</strong> porque la serie ahora inicia con <em>charming</em> (/tʃ/, sonido consonántico).
+            </div>
+        </div>
+
+        <!-- Ejercicio 3 Práctica (5 adjetivos) -->
+        <div class="question-card">
+            <p class="question-title">3. Situación práctica (5 adjetivos integrados):</p>
+            <p>Oración: <em>He gave her a [gold / elegant / round / small / Spanish] coin from the collection.</em></p>
+            <button class="action-btn" onclick="toggleAnswer('prac3')">Ver Respuesta y Desglose Jerárquico</button>
+            <div id="prac3" class="feedback-box feedback-success">
+                <strong>Respuesta correcta:</strong> <em>He gave her an elegant small round Spanish gold coin from the collection.</em><br><br>
+                <em>Desglose:</em><br>
+                - <strong>elegant:</strong> Opinión (1)<br>
+                - <strong>small:</strong> Tamaño (2)<br>
+                - <strong>round:</strong> Forma (4)<br>
+                - <strong>Spanish:</strong> Origen (6)<br>
+                - <strong>gold:</strong> Material (7)<br>
+                <em>Nota fonética:</em> El artículo se adapta a <strong>an</strong> al iniciar con el adjetivo <em>elegant</em>.
+            </div>
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('evaluacion')">Proceder a la Evaluación Final →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: EVALUACIÓN -->
+    <div id="evaluacion" class="content-section">
+        <h2>Evaluación Sumativa: Secuenciación Jerárquica de Adjetivos</h2>
+        <p>Seleccione la opción que reescribe cada oración colocando los adjetivos en el orden estricto antes del sustantivo, validando también el uso correcto del artículo.</p>
+
+        <!-- Reactivo 1 (3 adjetivos) -->
+        <div class="question-card" id="eval-group-1">
+            <p class="question-title">1. Ejercicio con 3 adjetivos:<br>
+            Oración base: <em>Yesterday, my sister found a [leather / small / lovely] bag in the cafeteria.</em></p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'Incorrecto. El adjetivo de tamaño (small) debe preceder al material (leather).')">A) Yesterday, my sister found a lovely leather small bag in the cafeteria.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', true, '¡Correcto! Jerarquía: lovely (Opinión) → small (Tamaño) → leather (Material).')">B) Yesterday, my sister found a lovely small leather bag in the cafeteria.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'Incorrecto. Los adjetivos de opinión valorativa (lovely) deben ubicarse siempre antes del tamaño y del material.')">C) Yesterday, my sister found a small lovely leather bag in the cafeteria.</div>
+            <div class="feedback-box" id="feedback-eval-group-1"></div>
+        </div>
+
+        <!-- Reactivo 2 (4 adjetivos) -->
+        <div class="question-card" id="eval-group-2">
+            <p class="question-title">2. Ejercicio con 4 adjetivos (con ajuste de artículo indefinido):<br>
+            Oración base: <em>My grandfather drives an [old / Italian / beautiful / red] car to visit us on Sundays.</em></p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'Error fonético y de jerarquía. Al anteponer beautiful se debe emplear \'a\' y no \'an\', y la edad (old) debe preceder al color (red).')">A) My grandfather drives an beautiful red old Italian car to visit us on Sundays.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', true, '¡Excelente! Secuencia: beautiful (Opinión) → old (Edad) → red (Color) → Italian (Origen). El artículo cambia de \'an\' a \'a\' porque beautiful inicia con consonante.')">B) My grandfather drives a beautiful old red Italian car to visit us on Sundays.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'Incorrecto. \'old\' no puede anteceder a \'beautiful\', ya que la opinión subjetiva encabeza la secuencia normativa.')">C) My grandfather drives an old beautiful red Italian car to visit us on Sundays.</div>
+            <div class="feedback-box" id="feedback-eval-group-2"></div>
+        </div>
+
+        <!-- Reactivo 3 (7 adjetivos - Desafío) -->
+        <div class="question-card" id="eval-group-3">
+            <p class="question-title">3. Ejercicio con 7 adjetivos (Desafío estructural):<br>
+            Oración base: <em>In the living room, there is a [round / wooden / comfortable / brown / French / dining / large] table.</em></p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', true, '¡Perfecto! Secuencia canónica exacta: comfortable (Opinión) → large (Tamaño) → round (Forma) → brown (Color) → French (Origen) → wooden (Material) → dining (Propósito).')">A) In the living room, there is a comfortable large round brown French wooden dining table.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'Incorrecto. El tamaño (large) precede a la forma (round), y el origen geográfico (French) debe preceder a la materia prima (wooden).')">B) In the living room, there is a comfortable round large brown wooden French dining table.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'Incorrecto. \'dining\' expresa el propósito final de la mesa, por lo que debe situarse inmediatamente antes del sustantivo.')">C) In the living room, there is a large comfortable round French brown dining wooden table.</div>
+            <div class="feedback-box" id="feedback-eval-group-3"></div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabMap = { 'inicio': 0, 'contenido': 1, 'practica': 2, 'evaluacion': 3 };
+            tabs[tabMap[tabId]].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('show');
+        }
+
+        function evaluateQuiz(selectedElement, groupId, isCorrect, explanation) {
+            const parent = document.getElementById(groupId);
+            const options = parent.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback-' + groupId);
+
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+
+            feedback.classList.remove('feedback-success', 'feedback-error');
+            feedback.classList.add('show');
+
+            if (isCorrect) {
+                selectedElement.classList.add('correct');
+                feedback.classList.add('feedback-success');
+                feedback.innerHTML = '<strong>Respuesta Correcta.</strong> ' + explanation;
+            } else {
+                selectedElement.classList.add('incorrect');
+                feedback.classList.add('feedback-error');
+                feedback.innerHTML = '<strong>Respuesta Incorrecta.</strong> ' + explanation;
+            }
+        }
+    </script>
+</body>
+</html>

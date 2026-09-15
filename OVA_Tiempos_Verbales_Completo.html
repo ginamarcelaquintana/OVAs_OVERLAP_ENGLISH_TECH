@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: English Verb Tenses System — Nivel A2/B1</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+        .nav-tabs {
+            display: flex;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.25s ease;
+            color: #475569;
+        }
+        .tab.active, .tab:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .rule-banner {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            margin: 18px 0;
+            letter-spacing: 0.5px;
+        }
+        .theory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+        .theory-table th, .theory-table td {
+            border: 1px solid #cbd5e1;
+            padding: 9px 11px;
+            text-align: left;
+        }
+        .theory-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .example-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #1e293b;
+        }
+        .translation-input {
+            width: 100%;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 14px;
+            background-color: #f8fafc;
+        }
+        .translation-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            background-color: #ffffff;
+        }
+        button.action-btn {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        button.action-btn:hover {
+            background-color: #334155;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 4px;
+            font-size: 13.5px;
+            display: none;
+            line-height: 1.5;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-success {
+            background-color: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+        .tense-badge {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+        .nav-footer {
+            text-align: right;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Objeto Virtual de Aprendizaje (OVA)</h1>
+        <p>Sistema Integral de Tiempos Verbales en Inglés (The 12 English Tenses)</p>
+    </header>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('inicio')">1. Inicio y Objetivos</div>
+        <div class="tab" onclick="switchTab('contenido')">2. Explicación Teórica</div>
+        <div class="tab" onclick="switchTab('practica')">3. Actividad Práctica</div>
+        <div class="tab" onclick="switchTab('evaluacion')">4. Evaluación</div>
+    </div>
+
+    <!-- SECCIÓN 1: INICIO Y OBJETIVOS -->
+    <div id="inicio" class="content-section active">
+        <h2>Bienvenido al módulo de precisión temporal</h2>
+        <p>El dominio de los doce tiempos verbales del inglés permite ubicar cualquier evento cronológicamente con exactitud milimétrica. Comprender la combinación sistemática de los tres ejes temporales (Pasado, Presente y Futuro) con los cuatro aspectos aspectuales (Simple, Continuo, Perfecto y Perfecto Continuo) es la competencia clave para la interpretación y traducción rigurosa entre el inglés y el español.</p>
+        
+        <div class="rule-banner">
+            Matriz Estructural: 3 Tiempos (Past, Present, Future) &times; 4 Aspectos (Simple, Continuous, Perfect, Perfect Continuous) = 12 Tiempos Verbales
+        </div>
+
+        <h3>Objetivos de Aprendizaje:</h3>
+        <ul>
+            <li><strong>Reconocimiento morfosintáctico:</strong> Identificar la fórmula auxiliar y la forma del verbo léxico (base, gerundio en <em>-ing</em> o participio pasado) en las doce estructuras verbales fundamentales.</li>
+            <li><strong>Traducción equivalente:</strong> Traducir enunciados oracionales preservando el matiz temporal preciso en español (duración, anterioridad, simultaneidad o conclusión proyectada).</li>
+            <li><strong>Análisis contextual:</strong> Asociar cada tiempo verbal a sus marcadores cronológicos característicos (<em>yesterday, right now, by next year, for five years, already</em>).</li>
+        </ul>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('contenido')">Iniciar Lección Teórica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: CONTENIDO TEÓRICO -->
+    <div id="contenido" class="content-section">
+        <h2>La Matriz Canónica de los 12 Tiempos Verbales</h2>
+        <p>La siguiente tabla sintetiza la fórmula activa invariable y el sentido temporal de cada una de las doce combinaciones del sistema verbal inglés:</p>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Tiempo Verbal</th>
+                    <th>Fórmula Estructural</th>
+                    <th>Función / Sentido Temporal</th>
+                    <th>Marcadores Típicos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Present Simple</strong></td>
+                    <td>Verbo base / <em>-s, -es</em> (3ª pers.)</td>
+                    <td>Rutinas, hábitos permanentes y hechos científicos.</td>
+                    <td><em>every day, usually, always</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Past Simple</strong></td>
+                    <td>Regular (<em>-ed</em>) / Irregular (2ª col.)</td>
+                    <td>Acción concluida en un punto cerrado del pasado.</td>
+                    <td><em>yesterday, last night, in 2018</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Future Simple</strong></td>
+                    <td><em>will</em> + Verbo base</td>
+                    <td>Decisiones espontáneas, promesas y hechos futuros.</td>
+                    <td><em>tomorrow, next month, soon</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Present Continuous</strong></td>
+                    <td><em>am/is/are</em> + Verbo-<em>ing</em></td>
+                    <td>Acción en progreso en el momento exacto de habla.</td>
+                    <td><em>right now, at the moment</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Past Continuous</strong></td>
+                    <td><em>was/were</em> + Verbo-<em>ing</em></td>
+                    <td>Acción pasada en desarrollo interrumpida por otra.</td>
+                    <td><em>while, when you called</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Future Continuous</strong></td>
+                    <td><em>will be</em> + Verbo-<em>ing</em></td>
+                    <td>Acción que estará en pleno curso en un momento futuro.</td>
+                    <td><em>tomorrow at ten, this time next week</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Present Perfect</strong></td>
+                    <td><em>have/has</em> + Participio pasado</td>
+                    <td>Acción ocurrida en tiempo indefinido o vinculada al presente.</td>
+                    <td><em>for, since, already, ever</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Past Perfect</strong></td>
+                    <td><em>had</em> + Participio pasado</td>
+                    <td>Acción pasada ocurrida antes de otra acción pasada (anterioridad).</td>
+                    <td><em>already, before, when the class started</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Future Perfect</strong></td>
+                    <td><em>will have</em> + Participio pasado</td>
+                    <td>Acción que habrá concluido con anterioridad a una fecha límite futura.</td>
+                    <td><em>by next year, by tomorrow</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Present Perfect Continuous</strong></td>
+                    <td><em>have/has been</em> + Verbo-<em>ing</em></td>
+                    <td>Acción iniciada en el pasado que continúa ininterrumpida hoy.</td>
+                    <td><em>for 40 minutes, all day</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Past Perfect Continuous</strong></td>
+                    <td><em>had been</em> + Verbo-<em>ing</em></td>
+                    <td>Proceso continuo previo causante de un resultado en el pasado.</td>
+                    <td><em>all morning (before it stopped)</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Future Perfect Continuous</strong></td>
+                    <td><em>will have been</em> + Verbo-<em>ing</em></td>
+                    <td>Proyección acumulativa de la duración de una acción hacia el futuro.</td>
+                    <td><em>by next month (for ten years)</em></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="example-box">
+            <strong>Pautas para una traducción rigurosa al español:</strong><br>
+            * <strong>Future Perfect:</strong> <em>will have finished</em> &rarr; «habrán terminado» (no confundir con «terminarán»).<br>
+            * <strong>Past Perfect Continuous:</strong> <em>had been raining</em> &rarr; «había estado lloviendo» (marca la causa de un resultado pasado).<br>
+            * <strong>Future Perfect Continuous:</strong> <em>will have been living</em> &rarr; «habrá estado viviendo» (mide duración acumulada proyectada).
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('practica')">Ir a la Actividad Práctica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: ACTIVIDAD PRÁCTICA -->
+    <div id="practica" class="content-section">
+        <h2>Actividad Práctica: Reconocimiento y Traducción Guiada</h2>
+        <p>Practique la identificación temporal y la traducción con estos ejercicios modelados antes de iniciar la evaluación de 12 reactivos.</p>
+
+        <!-- Práctica 1 -->
+        <div class="question-card">
+            <span class="tense-badge">Present Perfect</span>
+            <p class="question-title">1. Oración: <em>They have worked in this company since 2019.</em></p>
+            <input type="text" class="translation-input" placeholder="Escriba aquí su propuesta de traducción...">
+            <button class="action-btn" onclick="toggleAnswer('prac1')">Ver Clave y Análisis Gramatical</button>
+            <div id="prac1" class="feedback-box feedback-success">
+                <strong>Traducción canónica:</strong> Ellos han trabajado en esta empresa desde 2019.<br>
+                <em>Análisis:</em> Presente perfecto estructurado con el auxiliar <em>have</em> y participio regular <em>worked</em>. La partícula <em>since</em> fija el punto de partida en el pasado.
+            </div>
+        </div>
+
+        <!-- Práctica 2 -->
+        <div class="question-card">
+            <span class="tense-badge">Past Perfect</span>
+            <p class="question-title">2. Oración: <em>When the train arrived, the passengers had already bought their tickets.</em></p>
+            <input type="text" class="translation-input" placeholder="Escriba aquí su propuesta de traducción...">
+            <button class="action-btn" onclick="toggleAnswer('prac2')">Ver Clave y Análisis Gramatical</button>
+            <div id="prac2" class="feedback-box feedback-success">
+                <strong>Traducción canónica:</strong> Cuando el tren llegó, los pasajeros ya habían comprado sus billetes.<br>
+                <em>Análisis:</em> Pasado perfecto (<em>had bought</em>) que denota anterioridad estricta respecto a la llegada del tren (<em>arrived</em> en pasado simple).
+            </div>
+        </div>
+
+        <!-- Práctica 3 -->
+        <div class="question-card">
+            <span class="tense-badge">Future Continuous</span>
+            <p class="question-title">3. Oración: <em>Tonight at eight, she will be having dinner with her family.</em></p>
+            <input type="text" class="translation-input" placeholder="Escriba aquí su propuesta de traducción...">
+            <button class="action-btn" onclick="toggleAnswer('prac3')">Ver Clave y Análisis Gramatical</button>
+            <div id="prac3" class="feedback-box feedback-success">
+                <strong>Traducción canónica:</strong> Esta noche a las ocho, ella estará cenando con su familia.<br>
+                <em>Análisis:</em> Futuro continuo (<em>will be having</em>) que ubica una acción en curso simultáneo en una hora específica por venir.
+            </div>
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('evaluacion')">Proceder a la Evaluación (12 Ejercicios) →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: EVALUACIÓN (12 EJERCICIOS) -->
+    <div id="evaluacion" class="content-section">
+        <h2>Taller de Evaluación: Traducción e Identificación de Tiempos Verbales</h2>
+        <p><strong>Instrucciones generales para el estudiante:</strong> Lea atentamente cada una de las 12 oraciones en inglés. Traduzca cada frase en el espacio asignado preservando el sentido temporal exacto y luego haga clic en <em>Validar Traducción y Nota Gramatical</em> para corroborar su respuesta.</p>
+
+        <!-- Ejercicio 1 -->
+        <div class="question-card">
+            <span class="tense-badge">1. Present Perfect</span>
+            <p class="question-title">Oración en inglés: <strong>Carlos has lived in this house for five years.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval1')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval1" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Carlos ha vivido en esta casa durante cinco años.<br>
+                <strong>Explicación y nota gramatical:</strong> Presente perfecto (<em>Present Perfect</em>). Se estructura con el auxiliar <em>has</em> para la tercera persona del singular (<em>he</em>), seguido del participio pasado regular (<em>lived</em>). La preposición <em>for</em> señala la duración o extensión del periodo temporal de la acción.
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="question-card">
+            <span class="tense-badge">2. Present Continuous</span>
+            <p class="question-title">Oración en inglés: <strong>Right now, my brother is studying for his exam.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval2')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval2" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> En este momento, mi hermano está estudiando para su examen.<br>
+                <strong>Explicación y nota gramatical:</strong> Presente continuo (<em>Present Continuous</em>). Expresa una acción en pleno desarrollo en el momento de habla; requiere la conjugación del verbo <em>to be</em> en presente (<em>is</em>) y el verbo léxico con sufijo de gerundio (<em>-ing</em>).
+            </div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="question-card">
+            <span class="tense-badge">3. Future Perfect</span>
+            <p class="question-title">Oración en inglés: <strong>By next year, they will have finished university.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval3')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval3" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Para el próximo año, ellos habrán terminado la universidad.<br>
+                <strong>Explicación y nota gramatical:</strong> Futuro perfecto (<em>Future Perfect</em>). Plantea una acción proyectada que habrá culminado con anterioridad a una fecha límite futura, introducida comúnmente por la preposición <em>by</em>. Su fórmula invariable es <em>will have</em> + participio pasado (<em>finished</em>).
+            </div>
+        </div>
+
+        <!-- Ejercicio 4 -->
+        <div class="question-card">
+            <span class="tense-badge">4. Past Simple</span>
+            <p class="question-title">Oración en inglés: <strong>Yesterday we visited the city museum.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval4')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval4" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Ayer nosotros visitamos el museo de la ciudad.<br>
+                <strong>Explicación y nota gramatical:</strong> Pasado simple (<em>Past Simple</em>). Hace referencia a un suceso completamente concluido en un tiempo pretérito delimitado (<em>yesterday</em>). Por tratarse de un verbo regular, se añade el sufijo <em>-ed</em> a la raíz (<em>visited</em>).
+            </div>
+        </div>
+
+        <!-- Ejercicio 5 -->
+        <div class="question-card">
+            <span class="tense-badge">5. Past Perfect Continuous</span>
+            <p class="question-title">Oración en inglés: <strong>The ground was wet because it had been raining all morning.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval5')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval5" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> El suelo estaba mojado porque había estado lloviendo toda la mañana.<br>
+                <strong>Explicación y nota gramatical:</strong> Pasado perfecto continuo (<em>Past Perfect Continuous</em>). Se utiliza para evidenciar la causa o el proceso continuo (<em>had been raining</em>) que produjo un resultado visible en el pasado (<em>the ground was wet</em>). Su estructura combina el auxiliar <em>had been</em> con la terminación <em>-ing</em>.
+            </div>
+        </div>
+
+        <!-- Ejercicio 6 -->
+        <div class="question-card">
+            <span class="tense-badge">6. Present Simple</span>
+            <p class="question-title">Oración en inglés: <strong>She teaches English at a small school every day.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval6')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval6" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Ella enseña inglés en una escuela pequeña todos los días.<br>
+                <strong>Explicación y nota gramatical:</strong> Presente simple (<em>Present Simple</em>). Empleado para hábitos, rutinas o verdades permanentes (<em>every day</em>). Al conjugar la tercera persona singular (<em>she</em>), los verbos terminados en <em>-ch</em> agregan obligatoriamente la desinencia <em>-es</em> (<em>teaches</em>).
+            </div>
+        </div>
+
+        <!-- Ejercicio 7 -->
+        <div class="question-card">
+            <span class="tense-badge">7. Future Continuous</span>
+            <p class="question-title">Oración en inglés: <strong>Tomorrow at ten in the morning, we will be working on the project.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval7')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval7" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Mañana a las diez de la mañana, nosotros estaremos trabajando en el proyecto.<br>
+                <strong>Explicación y nota gramatical:</strong> Futuro continuo (<em>Future Continuous</em>). Describe una actividad que estará desarrollándose de forma simultánea en un punto horario específico del porvenir (<em>tomorrow at ten</em>). Se forma con la perífrasis <em>will be</em> + verbo principal en <em>-ing</em>.
+            </div>
+        </div>
+
+        <!-- Ejercicio 8 -->
+        <div class="question-card">
+            <span class="tense-badge">8. Past Continuous</span>
+            <p class="question-title">Oración en inglés: <strong>I was cooking dinner when you called.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval8')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval8" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Yo estaba cocinando la cena cuando tú llamaste.<br>
+                <strong>Explicación y nota gramatical:</strong> Pasado continuo (<em>Past Continuous</em>). Ilustra una acción de mayor duración o en progreso en el pasado (<em>was cooking</em>) que es repentinamente interrumpida por una acción puntual en pasado simple (<em>called</em>).
+            </div>
+        </div>
+
+        <!-- Ejercicio 9 -->
+        <div class="question-card">
+            <span class="tense-badge">9. Present Perfect Continuous</span>
+            <p class="question-title">Oración en inglés: <strong>She has been waiting for the bus for forty minutes.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval9')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval9" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Ella ha estado esperando el autobús durante cuarenta minutos.<br>
+                <strong>Explicación y nota gramatical:</strong> Presente perfecto continuo (<em>Present Perfect Continuous</em>). Resalta la duración ininterrumpida de una acción originada en el pasado que sigue teniendo vigencia en el presente. Se construye mediante <em>has been</em> seguido de la forma en <em>-ing</em> (<em>waiting</em>).
+            </div>
+        </div>
+
+        <!-- Ejercicio 10 -->
+        <div class="question-card">
+            <span class="tense-badge">10. Future Simple</span>
+            <p class="question-title">Oración en inglés: <strong>They will travel to Bogotá next month.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval10')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval10" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Ellos viajarán a Bogotá el próximo mes.<br>
+                <strong>Explicación y nota gramatical:</strong> Futuro simple (<em>Future Simple</em>). Formula una promesa, decisión o evento futuro general. El auxiliar modal <em>will</em> precede al verbo léxico en su forma base (<em>bare infinitive</em>), sin sufrir ninguna flexión de persona.
+            </div>
+        </div>
+
+        <!-- Ejercicio 11 -->
+        <div class="question-card">
+            <span class="tense-badge">11. Past Perfect</span>
+            <p class="question-title">Oración en inglés: <strong>When the class started, the students had already read the article.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval11')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval11" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Cuando la clase empezó, los estudiantes ya habían leído el artículo.<br>
+                <strong>Explicación y nota gramatical:</strong> Pasado perfecto (<em>Past Perfect</em>). Denota anterioridad estricta entre dos acciones pasadas: la lectura del artículo (<em>had read</em>) ocurrió antes de que la clase diera inicio (<em>started</em>). Notar que el participio de <em>read</em> conserva su ortografía idéntica pero su pronunciación cambia a /rɛd/.
+            </div>
+        </div>
+
+        <!-- Ejercicio 12 -->
+        <div class="question-card">
+            <span class="tense-badge">12. Future Perfect Continuous</span>
+            <p class="question-title">Oración en inglés: <strong>By next month, he will have been living here for ten years.</strong></p>
+            <input type="text" class="translation-input" placeholder="Espacio de traducción: escriba su versión en español aquí...">
+            <button class="action-btn" onclick="toggleAnswer('eval12')">Validar Traducción y Nota Gramatical</button>
+            <div id="eval12" class="feedback-box feedback-success">
+                <strong>Clave de respuesta (traducción):</strong> Para el próximo mes, él habrá estado viviendo aquí durante diez años.<br>
+                <strong>Explicación y nota gramatical:</strong> Futuro perfecto continuo (<em>Future Perfect Continuous</em>). Sirve para medir y proyectar la duración acumulada de una situación continuada al momento de alcanzar un punto temporal de referencia en el futuro (<em>by next month</em>). Emplea la combinación <em>will have been</em> + verbo en <em>-ing</em>.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabMap = { 'inicio': 0, 'contenido': 1, 'practica': 2, 'evaluacion': 3 };
+            tabs[tabMap[tabId]].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

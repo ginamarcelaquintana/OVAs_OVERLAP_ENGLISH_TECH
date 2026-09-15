@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: Comparatives and Superlatives (Nivel A2 - B1)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+        .nav-tabs {
+            display: flex;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.25s ease;
+            color: #475569;
+        }
+        .tab.active, .tab:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .rule-banner {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            margin: 18px 0;
+            letter-spacing: 0.5px;
+        }
+        .theory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13.5px;
+        }
+        .theory-table th, .theory-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .theory-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .example-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #1e293b;
+        }
+        .quiz-option {
+            display: block;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 12px 14px;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .quiz-option:hover {
+            background: #e2e8f0;
+        }
+        .correct {
+            background-color: #15803d !important;
+            color: #ffffff !important;
+            border-color: #166534 !important;
+        }
+        .incorrect {
+            background-color: #b91c1c !important;
+            color: #ffffff !important;
+            border-color: #991b1b !important;
+        }
+        button.action-btn {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        button.action-btn:hover {
+            background-color: #334155;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 4px;
+            font-size: 13.5px;
+            display: none;
+            line-height: 1.5;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-success {
+            background-color: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+        .nav-footer {
+            text-align: right;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Objeto Virtual de Aprendizaje (OVA)</h1>
+        <p>Comparativos y Superlativos: Detección y Corrección de Errores — Nivel A2/B1</p>
+    </header>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('inicio')">1. Inicio y Objetivos</div>
+        <div class="tab" onclick="switchTab('contenido')">2. Explicación Teórica</div>
+        <div class="tab" onclick="switchTab('practica')">3. Actividad Práctica</div>
+        <div class="tab" onclick="switchTab('evaluacion')">4. Evaluación</div>
+    </div>
+
+    <!-- SECCIÓN 1: INICIO Y OBJETIVOS -->
+    <div id="inicio" class="content-section active">
+        <h2>Bienvenido al módulo de graduación adjetival</h2>
+        <p>La formación de estructuras comparativas y superlativas en inglés sigue principios morfológicos y ortográficos precisos según el número de sílabas del adjetivo y su terminación fonética. Identificar los errores recurrentes (como dobles marcas, duplicaciones consonánticas omitidas o confusiones en formas irregulares) fortalece la precisión gramatical en la producción escrita.</p>
+        
+        <div class="rule-banner">
+            Regla de oro: Adjetivos cortos usan sufijos (-er / -est) | Adjetivos largos usan partículas (more / most) | ¡Nunca combinar ambos!
+        </div>
+
+        <h3>Objetivos de Aprendizaje:</h3>
+        <ul>
+            <li><strong>Morfología adjetival:</strong> Diferenciar las reglas de sufijación para adjetivos cortos frente a la anteposición de <em>more / most</em> para adjetivos largos.</li>
+            <li><strong>Ortografía normativa:</strong> Aplicar con rigor la regla de duplicación consonántica (patrón CVC) y el cambio de la <em>-y</em> por <em>-ier / -iest</em>.</li>
+            <li><strong>Detección de incorrecciones:</strong> Reconocer y corregir anomalías frecuentes como dobles comparativos, confusión entre formas irregulares (<em>better/best</em>, <em>worse/worst</em>) y omisión de partículas funcionales.</li>
+        </ul>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('contenido')">Iniciar Lección Teórica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: CONTENIDO TEÓRICO -->
+    <div id="contenido" class="content-section">
+        <h2>1. Clasificación y Formación Canónica</h2>
+        <p>El comportamiento morfofonológico del adjetivo determina su graduación:</p>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Tipo de Adjetivo</th>
+                    <th>Forma Comparativa (A &gt; B)</th>
+                    <th>Forma Superlativa (El grado máximo)</th>
+                    <th>Ejemplos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Monosílabos (Cortos)</strong></td>
+                    <td>Adjetivo + <strong>-er</strong> + <em>than</em></td>
+                    <td><em>the</em> + Adjetivo + <strong>-est</strong></td>
+                    <td><em>cold &rarr; colder &rarr; the coldest</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Terminados en Consonante + Y</strong></td>
+                    <td>Cambia <em>-y</em> a <strong>-ier</strong> + <em>than</em></td>
+                    <td><em>the</em> + cambia <em>-y</em> a <strong>-iest</strong></td>
+                    <td><em>easy &rarr; easier &rarr; the easiest</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Patrón CVC (1 sílaba)</strong></td>
+                    <td>Duplica última consonante + <strong>-er</strong></td>
+                    <td><em>the</em> + Duplica consonante + <strong>-est</strong></td>
+                    <td><em>big &rarr; bigger &rarr; the biggest</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Polisílabos (2 o más sílabas)</strong></td>
+                    <td><strong>more</strong> + Adjetivo + <em>than</em></td>
+                    <td><strong>the most</strong> + Adjetivo</td>
+                    <td><em>expensive &rarr; more expensive &rarr; the most expensive</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Irregulares (Formas propias)</strong></td>
+                    <td><em>better / worse / further</em></td>
+                    <td><em>the best / the worst / the furthest</em></td>
+                    <td><em>good &rarr; better &rarr; the best</em><br><em>bad &rarr; worse &rarr; the worst</em></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Los Tres Errores Más Frecuentes</h2>
+        <div class="example-box">
+            <strong>Precauciones gramaticales:</strong><br>
+            * <strong>Doble marca comparativa/superlativa:</strong> No se dice <em>the most easiest</em> ni <em>more colder</em>. Se elige únicamente el sufijo o la partícula, jamás ambos a la vez.<br>
+            * <strong>Confusión de irregulares:</strong> <em>Gooder</em> y <em>more good</em> son agramaticales; se debe usar <strong>better</strong>. <em>Worse</em> es comparativo y <strong>worst</strong> superlativo.<br>
+            * <strong>Ortografía CVC:</strong> En adjetivos de estructura Consonante-Vocal-Consonante como <em>big, hot, fat</em>, la consonante se duplica obligatoriamente: <strong>bigger</strong> (no <em>biger</em>).
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('practica')">Ir a la Actividad Práctica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: ACTIVIDAD PRÁCTICA -->
+    <div id="practica" class="content-section">
+        <h2>Actividad Práctica: Análisis y Corrección Guiada</h2>
+        <p>Analice las siguientes oraciones formativas independientes, identifique el error gramatical y despliegue la justificación para cotejar los criterios aplicados.</p>
+
+        <!-- Práctica 1: Adjetivo corto con more -->
+        <div class="question-card">
+            <p class="question-title">1. Situación formativa (Adjetivos cortos):<br>
+            Oración analizada: <em>This summer is more hot than last summer.</em></p>
+            <p>¿Qué corrección ortográfica y morfológica debe aplicarse?</p>
+            <button class="action-btn" onclick="toggleAnswer('prac1')">Ver Corrección y Justificación</button>
+            <div id="prac1" class="feedback-box feedback-success">
+                <strong>Corrección:</strong> <em>This summer is <strong>hotter</strong> than last summer.</em><br>
+                <em>Justificación:</em> <em>Hot</em> es un adjetivo monosílabo con patrón Consonante-Vocal-Consonante (H-O-T). No utiliza <em>more</em>, sino que duplica la consonante final y añade el sufijo: <strong>hotter</strong>.
+            </div>
+        </div>
+
+        <!-- Práctica 2: Doble comparativo con terminación en -y -->
+        <div class="question-card">
+            <p class="question-title">2. Situación formativa (Doble marca comparativa):<br>
+            Oración analizada: <em>My new puppy is more friendlier than the neighbor&apos;s dog.</em></p>
+            <p>¿Qué redundancia contiene la oración y cómo se corrige?</p>
+            <button class="action-btn" onclick="toggleAnswer('prac2')">Ver Corrección y Justificación</button>
+            <div id="prac2" class="feedback-box feedback-success">
+                <strong>Corrección:</strong> <em>My new puppy is <strong>friendlier</strong> than the neighbor&apos;s dog.</em><br>
+                <em>Justificación:</em> La frase incurre en un doble comparativo al utilizar simultáneamente <em>more</em> y el sufijo <em>-ier</em>. Debe eliminarse <em>more</em>.
+            </div>
+        </div>
+
+        <!-- Práctica 3: Irregular con bad -->
+        <div class="question-card">
+            <p class="question-title">3. Situación formativa (Adjetivo irregular):<br>
+            Oración analizada: <em>The traffic today is more bad than usual.</em></p>
+            <p>¿Cuál es la forma comparativa correcta del adjetivo <em>bad</em>?</p>
+            <button class="action-btn" onclick="toggleAnswer('prac3')">Ver Corrección y Justificación</button>
+            <div id="prac3" class="feedback-box feedback-success">
+                <strong>Corrección:</strong> <em>The traffic today is <strong>worse</strong> than usual.</em><br>
+                <em>Justificación:</em> <em>Bad</em> es un adjetivo irregular. Las formas <em>more bad</em> o <em>badder</em> no existen en la norma estándar; su comparativo propio es <strong>worse</strong>.
+            </div>
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('evaluacion')">Proceder a la Evaluación Final →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: EVALUACIÓN (6 NUMERALES) -->
+    <div id="evaluacion" class="content-section">
+        <h2>Taller de Evaluación: Identificación de Errores en Comparativos y Superlativos</h2>
+        <p><strong>Instrucciones generales para el estudiante:</strong> Lea con atención cada uno de los numerales. Cada grupo contiene tres oraciones (A, B y C), de las cuales dos son correctas y <strong>una contiene un error gramatical</strong>. Seleccione la opción incorrecta e identifique la corrección adecuada.</p>
+
+        <!-- Numeral 1 -->
+        <div class="question-card" id="eval-group-1">
+            <p class="question-title">1. Ejercicio: Comparativos con adjetivos cortos</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'Esta oracion es gramaticalmente correcta: bigger duplica la g por patron CVC y anade -er.')">A) My new apartment is bigger than my old one.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', true, '¡Correcto! Esta es la opcion con error. Correccion: Today the weather is colder than yesterday. El adjetivo cold es monosilabo; la regla exige anadir el sufijo -er (colder). El uso de more se reserva para adjetivos largos.')">B) Today the weather is more cold than yesterday.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'Esta oracion es gramaticalmente correcta: easy cambia la y por i y anade -er (easier).')">C) This math exam was easier than the previous test.</div>
+            <div class="feedback-box" id="feedback-eval-group-1"></div>
+        </div>
+
+        <!-- Numeral 2 -->
+        <div class="question-card" id="eval-group-2">
+            <p class="question-title">2. Ejercicio: Formas irregulares</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', true, '¡Correcto! Esta es la opcion con error. Correccion: Traveling by train is better than traveling by bus. Good tiene graduacion irregular; no admite more ni -er. Su comparativo propio e invariable es better.')">A) Traveling by train is more good than traveling by bus.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'Esta oracion es correcta: further es una forma comparativa irregular valida de far para denotar distancia.')">B) The library is further than the sports complex.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'Esta oracion es correcta: better es el comparativo irregular de good, y much actua como intensificador valido.')">C) Her second presentation was much better than the first.</div>
+            <div class="feedback-box" id="feedback-eval-group-2"></div>
+        </div>
+
+        <!-- Numeral 3 -->
+        <div class="question-card" id="eval-group-3">
+            <p class="question-title">3. Ejercicio: Doble marca comparativa o superlativa</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'Esta oracion es correcta: the highest es el superlativo regular estandar de high.')">A) Mount Everest is the highest mountain in the world.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', true, '¡Correcto! Esta es la opcion con error. Correccion: This is by far the easiest exercise in the unit. La oracion incurre en doble superlativo al combinar most con el sufijo -est. Dado que easy termina en consonante + y, su forma correcta es the easiest.')">B) This is by far the most easiest exercise in the unit.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'Esta oracion es correcta: intelligent es un adjetivo largo de cuatro silabas y forma el superlativo anteponiendo the most.')">C) She is the most intelligent student in the class.</div>
+            <div class="feedback-box" id="feedback-eval-group-3"></div>
+        </div>
+
+        <!-- Numeral 4 -->
+        <div class="question-card" id="eval-group-4">
+            <p class="question-title">4. Ejercicio: Estructura comparativa con adjetivos largos</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-4', false, 'Esta oracion es correcta: difficult tiene tres silabas y forma el comparativo anteponiendo more.')">A) Learning French pronunciation is more difficult than learning vocabulary.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-4', true, '¡Correcto! Esta es la opcion con error. Correccion: This smartphone is more expensive than the model we saw yesterday. Para formular la comparacion con un adjetivo largo como expensive es indispensable anteponer more. Omitir esta palabra anula la estructura comparativa.')">B) This smartphone is expensive than the model we saw yesterday.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-4', false, 'Esta oracion es correcta: comfortable forma la comparacion de superioridad con more comfortable than.')">C) The blue sofa is more comfortable than the wooden chair.</div>
+            <div class="feedback-box" id="feedback-eval-group-4"></div>
+        </div>
+
+        <!-- Numeral 5 -->
+        <div class="question-card" id="eval-group-5">
+            <p class="question-title">5. Ejercicio: Distinción entre comparativo y superlativo irregular</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-5', true, '¡Correcto! Esta es la opcion con error. Correccion: Yesterday was the worst day of the week for the team. Se confunde la forma comparativa (worse than) con la superlativa del adjetivo bad. Para senalar el grado extremo dentro de la semana se requiere the worst.')">A) Yesterday was the worse day of the week for the team.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-5', false, 'Esta oracion es correcta: the shortest es el superlativo regular normativo del adjetivo corto short.')">B) February is usually the shortest month of the year.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-5', false, 'Esta oracion es correcta: the least expensive es una estructura superlativa de inferioridad valida.')">C) He bought the least expensive ticket available.</div>
+            <div class="feedback-box" id="feedback-eval-group-5"></div>
+        </div>
+
+        <!-- Numeral 6 -->
+        <div class="question-card" id="eval-group-6">
+            <p class="question-title">6. Ejercicio: Reglas ortográficas (Consonante-Vocal-Consonante / CVC)</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-6', false, 'Esta oracion es correcta: deep tiene dos vocales seguidas (-ee-), por lo que no duplica consonante y solo anade -er (deeper).')">A) The Pacific Ocean is deeper than the Atlantic Ocean.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-6', true, '¡Correcto! Esta es la opcion con error. Correccion: An elephant is bigger than a horse. En adjetivos de una silaba con patron CVC (B-I-G), la regla ortografica demanda duplicar la consonante antes de agregar -er. Escribir biger es una falta.')">B) An elephant is biger than a horse.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-6', false, 'Esta oracion es correcta: heavy termina en consonante + y, por lo que transforma la y en i y anade -er (heavier).')">C) This jacket is heavier than that light coat.</div>
+            <div class="feedback-box" id="feedback-eval-group-6"></div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabMap = { 'inicio': 0, 'contenido': 1, 'practica': 2, 'evaluacion': 3 };
+            tabs[tabMap[tabId]].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('show');
+        }
+
+        function evaluateQuiz(selectedElement, groupId, isCorrect, explanation) {
+            const parent = document.getElementById(groupId);
+            const options = parent.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback-' + groupId);
+
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+
+            feedback.classList.remove('feedback-success', 'feedback-error');
+            feedback.classList.add('show');
+
+            if (isCorrect) {
+                selectedElement.classList.add('correct');
+                feedback.classList.add('feedback-success');
+                feedback.innerHTML = '<strong>Respuesta Correcta (identificó el error).</strong> ' + explanation;
+            } else {
+                selectedElement.classList.add('incorrect');
+                feedback.classList.add('feedback-error');
+                feedback.innerHTML = '<strong>Respuesta Incorrecta (esta frase es correcta).</strong> ' + explanation;
+            }
+        }
+    </script>
+</body>
+</html>

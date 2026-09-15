@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: Sentence Analysis & Syntactic Components (Nivel A2)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+        .nav-tabs {
+            display: flex;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.25s ease;
+            color: #475569;
+        }
+        .tab.active, .tab:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .sentence-banner {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 18px 22px;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 0.3px;
+            margin: 18px 0;
+        }
+        .theory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .theory-table th, .theory-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .theory-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .example-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .quiz-option {
+            display: block;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .quiz-option:hover {
+            background: #e2e8f0;
+        }
+        .correct {
+            background-color: #15803d !important;
+            color: #ffffff !important;
+            border-color: #166534 !important;
+        }
+        .incorrect {
+            background-color: #b91c1c !important;
+            color: #ffffff !important;
+            border-color: #991b1b !important;
+        }
+        button.action-btn {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        button.action-btn:hover {
+            background-color: #334155;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: none;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-success {
+            background-color: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+        .feedback-error {
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+        .nav-footer {
+            text-align: right;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Objeto Virtual de Aprendizaje (OVA)</h1>
+        <p>Análisis Sintáctico: Sustantivos, Sujetos y Pronombres en Oraciones Compuestas — Nivel A2</p>
+    </header>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('inicio')">1. Inicio y Objetivos</div>
+        <div class="tab" onclick="switchTab('contenido')">2. Explicación Teórica</div>
+        <div class="tab" onclick="switchTab('practica')">3. Actividad Práctica</div>
+        <div class="tab" onclick="switchTab('evaluacion')">4. Evaluación</div>
+    </div>
+
+    <!-- SECCIÓN 1: INICIO Y OBJETIVOS -->
+    <div id="inicio" class="content-section active">
+        <h2>Bienvenido al módulo de análisis sintáctico</h2>
+        <p>Este recurso interactivo profundiza en la estructura interna de las oraciones en inglés, permitiéndole identificar con precisión cómo se distribuyen los sustantivos y las diferentes formas que adopta el sujeto (sujetos compuestos con nombres propios, frases nominales con determinantes o pronombres personales) a través de distintas cláusulas coordinadas.</p>
+
+        <h3>Objetivos de Aprendizaje:</h3>
+        <ul>
+            <li><strong>Reconocimiento morfológico:</strong> Identificar y clasificar sustantivos según designen personas, objetos o lugares en oraciones compuestas.</li>
+            <li><strong>Análisis sintáctico funcional:</strong> Distinguir las diferentes tipologías de sujeto (sujetos compuestos coordinados, frases nominales comunes y pronombres sujeto) asociadas a cada verbo.</li>
+            <li><strong>Transferencia analítica:</strong> Discriminar con rigor la diferencia entre función sintáctica (sujeto/objeto) y clase de palabra (sustantivo/pronombre) en contextos oracionales variados.</li>
+        </ul>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('contenido')">Iniciar Lección Teórica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: CONTENIDO TEÓRICO -->
+    <div id="contenido" class="content-section">
+        <h2>1. Identificación y Diversidad de Sustantivos (Nouns)</h2>
+        <p>Un sustantivo nombra una entidad concreta o abstracta. En una misma oración compuesta podemos encontrar diversas clases de sustantivos cumpliendo diferentes roles sintácticos:</p>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Tipo de Sustantivo</th>
+                    <th>Definición</th>
+                    <th>Ejemplos Comunes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Personas (Nombres comunes y propios)</strong></td>
+                    <td>Designan individuos por su rol social, familiar o nombre específico.</td>
+                    <td><em>Mom, Dad, teacher, students, Carlos, Maria</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Cosas y Objetos</strong></td>
+                    <td>Entidades materiales inanimadas o instrumentos.</td>
+                    <td><em>bicycle, books, computer, lunch, guitar</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Lugares</strong></td>
+                    <td>Espacios físicos, instituciones o destinos geográficos.</td>
+                    <td><em>home, school, library, park, hospital</em></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Tipologías de Sujeto en Cláusulas Coordinadas</h2>
+        <p>Cuando dos cláusulas se unen mediante una conjunción coordinante (<em>and, but, so</em>), cada verbo posee su propio sujeto. Los sujetos pueden manifestarse de distintas formas:</p>
+
+        <div class="example-box">
+            <strong>Variaciones comunes del Sujeto en inglés:</strong>
+            <ul>
+                <li><strong>Sujeto compuesto (Compound Subject):</strong> Formado por dos o más sustantivos unidos por <em>and</em> que comparten el mismo verbo (ej. <em>Mom and Dad bought...</em> / <em>Lucas and Sophia prepared...</em>).</li>
+                <li><strong>Frase nominal simple (Noun Phrase):</strong> Un determinante/artículo más un sustantivo común (ej. <em>The teacher explained...</em> / <em>The dog barked...</em>).</li>
+                <li><strong>Pronombre sujeto (Subject Pronoun):</strong> Pronombres personales (<em>I, you, he, she, it, we, they</em>) que reemplazan un grupo nominal y ejecutan la acción (ej. <em>...but they left it.</em> / <em>...so she ate it.</em>).</li>
+            </ul>
+        </div>
+
+        <h2>3. Pronombres: Sujeto vs. Objeto</h2>
+        <p>Para no incurrir en errores de conteo, es vital distinguir los sustantivos de los pronombres, así como identificar la posición de estos últimos:</p>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Función</th>
+                    <th>Pronombres representativos</th>
+                    <th>Comportamiento sintáctico</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Pronombre Sujeto</strong></td>
+                    <td><em>he, she, they, we, it</em></td>
+                    <td>Precede al verbo y ejecuta la acción (ej. <em><strong>they</strong> left...</em>).</td>
+                </tr>
+                <tr>
+                    <td><strong>Pronombre Objeto</strong></td>
+                    <td><em>him, her, them, us, it</em></td>
+                    <td>Sigue al verbo o preposición y recibe la acción (ej. <em>...left <strong>it</strong></em>).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('practica')">Ir a la Actividad Práctica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: ACTIVIDAD PRÁCTICA -->
+    <div id="practica" class="content-section">
+        <h2>Actividad Práctica: Análisis Guiado de una Oración Compuesta</h2>
+        <p>Analice con atención la siguiente oración, que presenta sujetos compuestos familiares y pronombres correlativos. Despliegue cada sección para corroborar su análisis.</p>
+
+        <div class="sentence-banner">
+            “Mom and Dad bought a bicycle, but they left it at home.”
+        </div>
+
+        <!-- Pregunta 1 Práctica -->
+        <div class="question-card">
+            <p class="question-title">1. ¿Cuántos sustantivos hay en la oración?</p>
+            <p>A) 2 &nbsp;&nbsp;|&nbsp;&nbsp; B) 3 &nbsp;&nbsp;|&nbsp;&nbsp; C) 4</p>
+            <button class="action-btn" onclick="toggleAnswer('prac1')">Ver Respuesta y Justificación</button>
+            <div id="prac1" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: C (4 sustantivos)</strong><br>
+                <em>Explicación detallada:</em> Hay cuatro sustantivos en total:<br>
+                1. <strong>Mom</strong> (sustantivo de persona)<br>
+                2. <strong>Dad</strong> (sustantivo de persona)<br>
+                3. <strong>bicycle</strong> (sustantivo de objeto)<br>
+                4. <strong>home</strong> (sustantivo de lugar).<br>
+                <em>Nota didáctica:</em> Las palabras <em>they</em> e <em>it</em> no entran en este conteo porque son pronombres, no sustantivos.
+            </div>
+        </div>
+
+        <!-- Pregunta 2 Práctica -->
+        <div class="question-card">
+            <p class="question-title">2. ¿Cuántos sujetos hay en la oración?</p>
+            <p>A) 2 &nbsp;&nbsp;|&nbsp;&nbsp; B) 3 &nbsp;&nbsp;|&nbsp;&nbsp; C) 1</p>
+            <button class="action-btn" onclick="toggleAnswer('prac2')">Ver Respuesta y Justificación</button>
+            <div id="prac2" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: A (2 sujetos)</strong><br>
+                <em>Explicación detallada:</em> La oración contiene dos cláusulas conectadas por la conjunción <em>but</em>, y cada una cuenta con su propio sujeto:<br>
+                - <strong>Mom and Dad:</strong> sujeto compuesto coordinado que ejecuta la acción <em>bought</em>.<br>
+                - <strong>they:</strong> pronombre personal que funciona como sujeto de la segunda cláusula y ejecuta la acción <em>left</em>.
+            </div>
+        </div>
+
+        <!-- Pregunta 3 Práctica -->
+        <div class="question-card">
+            <p class="question-title">3. ¿Hay pronombres en la oración?</p>
+            <p>A) No, no hay pronombres.<br>
+            B) Sí, hay un solo pronombre (they).<br>
+            C) Sí, hay dos pronombres (they e it).</p>
+            <button class="action-btn" onclick="toggleAnswer('prac3')">Ver Respuesta y Justificación</button>
+            <div id="prac3" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: C (Sí, hay dos pronombres)</strong><br>
+                <em>Explicación detallada:</em> Existen dos pronombres con roles diferenciados:<br>
+                - <strong>they:</strong> pronombre en función de sujeto (reemplaza anafóricamente a <em>Mom and Dad</em>).<br>
+                - <strong>it:</strong> pronombre en función de objeto directo (reemplaza al sustantivo <em>bicycle</em> y recibe la acción de <em>left</em>).
+            </div>
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('evaluacion')">Proceder a la Evaluación Final →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: EVALUACIÓN -->
+    <div id="evaluacion" class="content-section">
+        <h2>Evaluación Formativa: Transferencia a una Nueva Estructura</h2>
+        <p>Para verificar su dominio teórico y capacidad de transferencia, analice la siguiente oración que incluye <strong>nombres propios coordinados</strong>, <strong>sustantivos plurales</strong> y una <strong>frase nominal institucional</strong>:</p>
+
+        <div class="sentence-banner">
+            “Carlos and Maria borrowed three books, but the teacher returned them to the library.”
+        </div>
+
+        <!-- Reactivo 1 Evaluación -->
+        <div class="question-card" id="eval-group-1">
+            <p class="question-title">1. ¿Cuántos sustantivos (nouns) contiene en total esta nueva oración?</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'Conteo insuficiente. Recuerde incluir nombres propios, objetos plurales, personas por oficio y lugares.')">A) 3 sustantivos</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'Incompleto. Verifique si ha contado tanto los nombres propios iniciales como el sustantivo final de lugar.')">B) 4 sustantivos</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', true, '¡Correcto! Hay 5 sustantivos: Carlos (nombre propio), Maria (nombre propio), books (objeto plural), teacher (persona u oficio) y library (lugar). Palabras como them son pronombres.')">C) 5 sustantivos</div>
+            <div class="feedback-box" id="feedback-eval-group-1"></div>
+        </div>
+
+        <!-- Reactivo 2 Evaluación -->
+        <div class="question-card" id="eval-group-2">
+            <p class="question-title">2. ¿Cuáles son los sujetos que ejecutan las acciones en las dos cláusulas de la oración?</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', true, '¡Excelente! En la primera clausula, Carlos and Maria forman un sujeto compuesto para el verbo borrowed. En la segunda, la frase nominal the teacher es el sujeto del verbo returned.')">A) Sujeto 1: &quot;Carlos and Maria&quot; (compuesto) | Sujeto 2: &quot;the teacher&quot; (frase nominal)</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'Incorrecto. three books no ejecuta ninguna accion; recibe la accion de borrowed, funcionando como objeto directo.')">B) Sujeto 1: &quot;Carlos and Maria&quot; | Sujeto 2: &quot;three books&quot;</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'Incorrecto. them es un pronombre objeto y library es el termino de un complemento preposicional de lugar.')">C) Sujeto 1: &quot;the teacher&quot; | Sujeto 2: &quot;them to the library&quot;</div>
+            <div class="feedback-box" id="feedback-eval-group-2"></div>
+        </div>
+
+        <!-- Reactivo 3 Evaluación -->
+        <div class="question-card" id="eval-group-3">
+            <p class="question-title">3. Respecto a la palabra &quot;them&quot; en la segunda cláusula, ¿cuál es su clasificación y función sintáctica exacta?</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'Incorrecto. them es un pronombre personal de objeto, no un determinante posesivo (el posesivo seria their).')">A) Es un adjetivo posesivo que describe a &quot;library&quot;.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', true, '¡Muy bien! Them es un pronombre personal de objeto que sustituye al grupo nominal plural three books y recibe la accion directa de returned.')">B) Es un pronombre objeto que sustituye anaforicamente a &quot;three books&quot;.</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'Incorrecto. Quien ejecuta la accion de retornar es the teacher; them no puede funcionar como sujeto.')">C) Es el pronombre sujeto de la segunda cláusula.</div>
+            <div class="feedback-box" id="feedback-eval-group-3"></div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabMap = { 'inicio': 0, 'contenido': 1, 'practica': 2, 'evaluacion': 3 };
+            tabs[tabMap[tabId]].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('show');
+        }
+
+        function evaluateQuiz(selectedElement, groupId, isCorrect, explanation) {
+            const parent = document.getElementById(groupId);
+            const options = parent.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback-' + groupId);
+
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+
+            feedback.classList.remove('feedback-success', 'feedback-error');
+            feedback.classList.add('show');
+
+            if (isCorrect) {
+                selectedElement.classList.add('correct');
+                feedback.classList.add('feedback-success');
+                feedback.innerHTML = '<strong>Respuesta Correcta.</strong> ' + explanation;
+            } else {
+                selectedElement.classList.add('incorrect');
+                feedback.classList.add('feedback-error');
+                feedback.innerHTML = '<strong>Respuesta Incorrecta.</strong> ' + explanation;
+            }
+        }
+    </script>
+</body>
+</html>

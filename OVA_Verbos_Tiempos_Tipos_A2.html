@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: Verbs Identification and Classification (Nivel A2)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+        .nav-tabs {
+            display: flex;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.25s ease;
+            color: #475569;
+        }
+        .tab.active, .tab:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .rule-banner {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+            margin: 18px 0;
+            letter-spacing: 0.5px;
+        }
+        .theory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .theory-table th, .theory-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .theory-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .example-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .part-header {
+            background-color: #e2e8f0;
+            color: #1e293b;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            margin: 24px 0 16px 0;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .quiz-option {
+            display: block;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 12px 14px;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .quiz-option:hover {
+            background: #e2e8f0;
+        }
+        .correct {
+            background-color: #15803d !important;
+            color: #ffffff !important;
+            border-color: #166534 !important;
+        }
+        .incorrect {
+            background-color: #b91c1c !important;
+            color: #ffffff !important;
+            border-color: #991b1b !important;
+        }
+        button.action-btn {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        button.action-btn:hover {
+            background-color: #334155;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: none;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-success {
+            background-color: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+        .feedback-error {
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+        .nav-footer {
+            text-align: right;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Objeto Virtual de Aprendizaje (OVA)</h1>
+        <p>Identificación y Clasificación de Verbos: Tiempos y Naturaleza Semántica — Nivel A2</p>
+    </header>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('inicio')">1. Inicio y Objetivos</div>
+        <div class="tab" onclick="switchTab('contenido')">2. Explicación Teórica</div>
+        <div class="tab" onclick="switchTab('practica')">3. Actividad Práctica</div>
+        <div class="tab" onclick="switchTab('evaluacion')">4. Evaluación</div>
+    </div>
+
+    <!-- SECCIÓN 1: INICIO Y OBJETIVOS -->
+    <div id="inicio" class="content-section active">
+        <h2>Bienvenido al módulo de análisis verbal</h2>
+        <p>El verbo constituye el núcleo predicativo esencial de cualquier cláusula en inglés. Para alcanzar suficiencia en el nivel A2, es indispensable no solo reconocer la palabra que porta la acción o estado y su tiempo cronológico (presente frente a pasado), sino también distinguir la naturaleza intrínseca del verbo: dinámico frente a estático.</p>
+        
+        <div class="rule-banner">
+            Eje central: ¿Qué acción u ocurrencia se predica? ¿Es un acto dinámico observable o un estado mental permanente?
+        </div>
+
+        <h3>Objetivos de Aprendizaje:</h3>
+        <ul>
+            <li><strong>Identificación temporal:</strong> Reconocer con exactitud el verbo principal en oraciones contextualizadas, diferenciando conjugaciones regulares e irregulares en presente simple y pasado simple.</li>
+            <li><strong>Distinción categorial:</strong> Evitar la confusión morfosintáctica entre verbos finitos y otras palabras del entorno oracional (sustantivos de actividad o adjetivos terminados en <em>-ing</em>).</li>
+            <li><strong>Clasificación aspectual:</strong> Discriminar con rigor conceptual entre verbos de acción física o motora (<em>Action Verbs</em>) y verbos de cognición, emoción o estado sensorial (<em>Stative Verbs</em>).</li>
+        </ul>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('contenido')">Iniciar Lección Teórica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: CONTENIDO TEÓRICO -->
+    <div id="contenido" class="content-section">
+        <h2>1. Identificación del Verbo Principal y Tiempo Gramatical</h2>
+        <p>El verbo principal es el núcleo semántico que conecta el sujeto con su predicado y ubica la acción temporalmente:</p>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Tiempo Gramatical</th>
+                    <th>Marcadores y Morfología</th>
+                    <th>Función Didáctica</th>
+                    <th>Ejemplos Clave</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Simple Present (Presente Simple)</strong></td>
+                    <td>Sufijos <em>-s / -es</em> en 3ª persona (<em>he/she/it</em>). Verbos base para plurales. Marcadores: <em>every day, always, usually</em>.</td>
+                    <td>Expresa rutinas, verdades generales y hábitos cotidianos.</td>
+                    <td><em>She <strong>teaches</strong> French.</em><br><em>They <strong>play</strong> tennis.</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Simple Past (Pasado Simple)</strong></td>
+                    <td>Regulares: terminación <em>-ed</em>.<br>Irregulares: cambio de raíz (<em>eat &rarr; ate, run &rarr; ran</em>). Marcadores: <em>yesterday, last night, in 2020</em>.</td>
+                    <td>Expresa acciones concluidas en un punto temporal específico del pasado.</td>
+                    <td><em>We <strong>visited</strong> Rome.</em><br><em>He <strong>ate</strong> an apple.</em></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="example-box">
+            <strong>Cuidado con los falsos amigos de clase de palabra:</strong><br>
+            * En <em>"an interesting museum"</em>, la palabra <strong>interesting</strong> termina en <em>-ing</em> pero funciona como <strong>adjetivo</strong> descriptivo, no como verbo continuo.<br>
+            * En <em>"young learners"</em>, la palabra <strong>learners</strong> es un <strong>sustantivo plural</strong>, no un verbo conjugado.
+        </div>
+
+        <h2>2. Verbos de Acción vs. Verbos de Estado (Action vs. Stative Verbs)</h2>
+        <p>Desde la perspectiva semántica, los verbos en inglés se clasifican en dos grandes familias:</p>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Criterio</th>
+                    <th>Action Verbs (Verbos de Acción)</th>
+                    <th>Stative Verbs (Verbos de Estado)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Naturaleza</strong></td>
+                    <td>Acciones físicas, motoras o procesos dinámicos directamente observables.</td>
+                    <td>Condiciones mentales, cognitivas, emocionales, posesión o percepción sensorial.</td>
+                </tr>
+                <tr>
+                    <td><strong>Propiedad sintáctica</strong></td>
+                    <td>Admiten naturalmente tiempos progresivos (<em>-ing</em>).</td>
+                    <td><strong>No admiten</strong> habitualmente formas continuas o progresivas en inglés estándar.</td>
+                </tr>
+                <tr>
+                    <td><strong>Ejemplos representativos</strong></td>
+                    <td><em>run, teach, visit, write, drive, watch, buy</em></td>
+                    <td><em>understand, know, believe, like, love, want, have (posesión)</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Contraste contextual</strong></td>
+                    <td><em>The children <strong>ran</strong> across the field.</em> (Movimiento físico visible)</td>
+                    <td><em>Julian <strong>understands</strong> the rule.</em> (Estado mental, no movimiento físico)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('practica')">Ir a la Actividad Práctica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: ACTIVIDAD PRÁCTICA -->
+    <div id="practica" class="content-section">
+        <h2>Actividad Práctica: Análisis y Clasificación Guiada</h2>
+        <p>Resuelva los siguientes reactivos formativos diseñados para modelar el análisis verbal antes de acceder a la evaluación final.</p>
+
+        <div class="part-header">Parte 1: Núcleo verbal y tiempo gramatical</div>
+
+        <!-- Ejercicio 1 Práctica -->
+        <div class="question-card">
+            <p class="question-title">1. Oración: <em>Two years ago, Lucas discovered an ancient coin near the old castle.</em><br>
+            ¿Cuál es el verbo principal de la oración y en qué tiempo se encuentra?</p>
+            <button class="action-btn" onclick="toggleAnswer('prac1')">Ver Respuesta y Desglose</button>
+            <div id="prac1" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: El verbo es <em>discovered</em> y está en pasado simple (simple past).</strong><br>
+                <em>Justificación didáctica:</em> <em>Discovered</em> lleva el sufijo regular <em>-ed</em> y se vincula con la locución temporal <em>Two years ago</em>. Palabras como <em>ancient</em> (adjetivo) o <em>castle</em> (sustantivo) no son verbos.
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 Práctica -->
+        <div class="question-card">
+            <p class="question-title">2. Oración: <em>My older sister plays the violin in the city orchestra on weekends.</em><br>
+            ¿Cuál es el verbo principal de la oración y en qué tiempo se encuentra?</p>
+            <button class="action-btn" onclick="toggleAnswer('prac2')">Ver Respuesta y Desglose</button>
+            <div id="prac2" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: El verbo es <em>plays</em> y está en presente simple (simple present).</strong><br>
+                <em>Justificación didáctica:</em> Presenta la desinencia <em>-s</em> de tercera persona singular vinculada a un hábito periódico (<em>on weekends</em>).
+            </div>
+        </div>
+
+        <div class="part-header">Parte 2: Verbos de Acción vs. Verbos de Estado</div>
+
+        <!-- Ejercicio 3 Práctica -->
+        <div class="question-card">
+            <p class="question-title">3. Oración: <em>“Sophia knows the answer to that difficult question.”</em><br>
+            El verbo destacado <strong>knows</strong> corresponde a:</p>
+            <button class="action-btn" onclick="toggleAnswer('prac3')">Ver Respuesta y Desglose</button>
+            <div id="prac3" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: Un verbo de estado o proceso cognitivo (Stative Verb).</strong><br>
+                <em>Justificación didáctica:</em> <em>Know</em> describe posesión de conocimiento o condición mental, no una actividad física. Por ello, no se dice <em>"she is knowing"</em>.
+            </div>
+        </div>
+
+        <!-- Ejercicio 4 Práctica -->
+        <div class="question-card">
+            <p class="question-title">4. Oración: <em>“The athlete jumped over the barrier during the competition.”</em><br>
+            El verbo destacado <strong>jumped</strong> corresponde a:</p>
+            <button class="action-btn" onclick="toggleAnswer('prac4')">Ver Respuesta y Desglose</button>
+            <div id="prac4" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: Un verbo de acción dinámica (Action Verb).</strong><br>
+                <em>Justificación didáctica:</em> <em>Jumped</em> describe una acción corporal y mecánica plenamente observable en el espacio.
+            </div>
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('evaluacion')">Proceder a la Evaluación Final →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: EVALUACIÓN -->
+    <div id="evaluacion" class="content-section">
+        <h2>Taller de Evaluación: Identificación y Tipos de Verbos</h2>
+
+        <div class="part-header">Parte 1: Identificación del verbo principal y su tiempo gramatical (Pasado o Presente)</div>
+        <p><strong>Instrucciones generales:</strong> Lea con atención cada una de las siguientes oraciones en inglés. Seleccione la opción que identifique de manera correcta cuál es el verbo principal de la frase y en qué tiempo gramatical está conjugado.</p>
+
+        <!-- Reactivo 1 -->
+        <div class="question-card" id="eval-group-1">
+            <p class="question-title">1. Oración: <em>Yesterday, my family visited an interesting museum in the center of the city.</em></p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', true, '¡Correcto! Visited es el verbo léxico regular con la terminación -ed, el cual expresa una acción puntual terminada en el pasado vinculada a la expresión yesterday. Interesting es un adjetivo y center es un sustantivo.')">A) El verbo es visited y está en pasado simple (simple past).</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'Incorrecto. Interesting termina en -ing pero cumple función sintáctica de adjetivo calificativo para museum.')">B) El verbo es interesting y está en presente (present).</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'Incorrecto. Center es un sustantivo común de lugar, precedido de la preposición in.')">C) El verbo es center y está en pasado simple (simple past).</div>
+            <div class="feedback-box" id="feedback-eval-group-1"></div>
+        </div>
+
+        <!-- Reactivo 2 -->
+        <div class="question-card" id="eval-group-2">
+            <p class="question-title">2. Oración: <em>Camila teaches English to young learners at a primary school every morning.</em></p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'Incorrecto. Learners es un sustantivo plural precedido por el adjetivo young.')">A) El verbo es learners y está en pasado simple (simple past).</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'Incorrecto. School es un sustantivo común singular que forma parte de un complemento preposicional.')">B) El verbo es school y está en presente continuo (present continuous).</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', true, '¡Correcto! Teaches corresponde a la conjugación en presente simple con el sufijo -es de tercera persona singular (Camila = she), describiendo un hábito recurrente (every morning).')">C) El verbo es teaches y está en presente simple (simple present).</div>
+            <div class="feedback-box" id="feedback-eval-group-2"></div>
+        </div>
+
+        <!-- Reactivo 3 -->
+        <div class="question-card" id="eval-group-3">
+            <p class="question-title">3. Oración: <em>Last night, we ate dinner together and watched a movie.</em><br>
+            ¿Cuál es el primer verbo principal y en qué tiempo gramatical se encuentra?</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'Incorrecto. Dinner es el sustantivo objeto directo del verbo ate.')">A) El verbo es dinner (presente simple).</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', true, '¡Excelente! Ate es la forma irregular en pasado simple del verbo eat. Aunque watched también es un verbo en pasado, la consigna exige identificar el primer verbo principal.')">B) El verbo es ate (pasado simple).</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'Incorrecto. Watched es el segundo verbo de la serie coordinada y no está en presente sino en pasado regular.')">C) El verbo es watched (presente simple).</div>
+            <div class="feedback-box" id="feedback-eval-group-3"></div>
+        </div>
+
+        <div class="part-header">Parte 2: Verbos de acción frente a verbos de estado (Action Verbs vs. Stative Verbs)</div>
+        <p><strong>Instrucciones generales:</strong> Examine el verbo resaltado en cada una de las frases y determine si corresponde a un verbo de acción dinámica (Action Verb) o a un verbo de estado, posesión o proceso cognitivo (Stative Verb).</p>
+
+        <!-- Reactivo 4 -->
+        <div class="question-card" id="eval-group-4">
+            <p class="question-title">4. Oración: <em>“Julian <strong>understands</strong> the grammar rule very clearly.”</em><br>
+            El verbo <strong>understands</strong> corresponde a:</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-4', false, 'Incorrecto. No involucra movimiento muscular o físico visible; se trata de una facultad cognitiva.')">A) Un verbo de acción dinámica (action verb)</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-4', true, '¡Muy bien! Understand expresa una capacidad o estado mental y cognoscitivo, no un movimiento corporal dinámico. Por ello no se emplea habitualmente en tiempos progresivos.')">B) Un verbo de estado o condición mental (stative verb)</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-4', false, 'Incorrecto. Un verbo auxiliar en inglés sería do, does, have o be.')">C) Un verbo auxiliar (auxiliary verb)</div>
+            <div class="feedback-box" id="feedback-eval-group-4"></div>
+        </div>
+
+        <!-- Reactivo 5 -->
+        <div class="question-card" id="eval-group-5">
+            <p class="question-title">5. Oración: <em>“The children <strong>ran</strong> across the soccer field after class.”</em><br>
+            El verbo <strong>ran</strong> corresponde a:</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-5', true, '¡Correcto! Ran (pasado irregular de run) designa una actividad motora, física y directamente observable en el espacio ejecutada por the children.')">A) Un verbo de acción dinámica (action verb)</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-5', false, 'Incorrecto. Correr no es un sentimiento o emoción pasiva; es un desplazamiento dinámico.')">B) Un verbo de estado emocional (stative verb)</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-5', false, 'Incorrecto. Los modales son can, could, must, should, etc.')">C) Un verbo modal (modal verb)</div>
+            <div class="feedback-box" id="feedback-eval-group-5"></div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabMap = { 'inicio': 0, 'contenido': 1, 'practica': 2, 'evaluacion': 3 };
+            tabs[tabMap[tabId]].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('show');
+        }
+
+        function evaluateQuiz(selectedElement, groupId, isCorrect, explanation) {
+            const parent = document.getElementById(groupId);
+            const options = parent.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback-' + groupId);
+
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+
+            feedback.classList.remove('feedback-success', 'feedback-error');
+            feedback.classList.add('show');
+
+            if (isCorrect) {
+                selectedElement.classList.add('correct');
+                feedback.classList.add('feedback-success');
+                feedback.innerHTML = '<strong>Respuesta Correcta.</strong> ' + explanation;
+            } else {
+                selectedElement.classList.add('incorrect');
+                feedback.classList.add('feedback-error');
+                feedback.innerHTML = '<strong>Respuesta Incorrecta.</strong> ' + explanation;
+            }
+        }
+    </script>
+</body>
+</html>

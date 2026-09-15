@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: Parts of Speech & Sentence Functions (Nivel A2)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 24px;
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+        .nav-tabs {
+            display: flex;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: 0.25s ease;
+            color: #475569;
+        }
+        .tab.active, .tab:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .theory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+        .theory-table th, .theory-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .theory-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .example-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .quiz-option {
+            display: block;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 10px 14px;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .quiz-option:hover {
+            background: #e2e8f0;
+        }
+        .correct {
+            background-color: #15803d !important;
+            color: #ffffff !important;
+            border-color: #166534 !important;
+        }
+        .incorrect {
+            background-color: #b91c1c !important;
+            color: #ffffff !important;
+            border-color: #991b1b !important;
+        }
+        button.action-btn {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        button.action-btn:hover {
+            background-color: #334155;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: none;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-success {
+            background-color: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+        .feedback-error {
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+        .nav-footer {
+            text-align: right;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Objeto Virtual de Aprendizaje (OVA)</h1>
+        <p>Parts of Speech and Syntactic Functions — Nivel A2</p>
+    </header>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('inicio')">1. Inicio y Objetivos</div>
+        <div class="tab" onclick="switchTab('contenido')">2. Explicación Teórica</div>
+        <div class="tab" onclick="switchTab('practica')">3. Actividad Práctica</div>
+        <div class="tab" onclick="switchTab('evaluacion')">4. Evaluación</div>
+    </div>
+
+    <!-- SECCIÓN 1: INICIO Y OBJETIVOS -->
+    <div id="inicio" class="content-section active">
+        <h2>Bienvenido al módulo</h2>
+        <p>Comprender cómo se clasifican las palabras y qué función cumplen dentro de una oración en inglés es fundamental para estructurar ideas con precisión y avanzar hacia niveles intermedios de suficiencia comunicativa.</p>
+        
+        <h3>Objetivos de Aprendizaje:</h3>
+        <ul>
+            <li>Identificar con precisión las categorías gramaticales básicas (<em>Parts of Speech</em>): sustantivos, pronombres, adjetivos, adverbios, conjunciones e interjecciones.</li>
+            <li>Diferenciar con claridad la categoría gramatical intrínseca de una palabra frente a su función sintáctica dentro de la oración (sujeto, verbo, objeto).</li>
+            <li>Aplicar el análisis morfosintáctico contextualizado para resolver situaciones de comprensión gramatical en nivel A2.</li>
+        </ul>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('contenido')">Iniciar Lección Teórica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: CONTENIDO TEÓRICO -->
+    <div id="contenido" class="content-section">
+        <h2>1. Categorías Gramaticales (Parts of Speech)</h2>
+        <p>Cada palabra en inglés pertenece a una clase formal determinada por su naturaleza y la función léxica que cumple:</p>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Definición Operativa</th>
+                    <th>Ejemplos Clave</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Adjective</strong></td>
+                    <td>Modifica, califica o describe a un sustantivo.</td>
+                    <td><em>beautiful, big, difficult</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Adverb</strong></td>
+                    <td>Indica cómo, cuándo, dónde o en qué grado se ejecuta una acción verbal.</td>
+                    <td><em>quickly, yesterday, very</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Conjunction</strong></td>
+                    <td>Conecta palabras, frases o cláusulas subordinadas/coordinadas.</td>
+                    <td><em>but, because, and, although</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Pronoun</strong></td>
+                    <td>Reemplaza a un nombre o frase nominal, evitando la redundancia.</td>
+                    <td><em>they, their, us, she, he</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Interjection</strong></td>
+                    <td>Palabra o exclamación corta que denota emoción repentina o sorpresa.</td>
+                    <td><em>Wow!, Ouch!, Hey!</em></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Categoría Gramatical vs. Función Sintáctica</h2>
+        <p>Un error frecuente consiste en confundir <strong>qué es</strong> una palabra frente a <strong>qué hace</strong> dentro de una estructura particular:</p>
+        
+        <div class="example-box">
+            <strong>Distinción Fundamental:</strong><br>
+            * <strong>Categoría léxica (¿Qué es?):</strong> <em>The doctor</em> está formado por un artículo y un sustantivo común; <em>David</em> es un sustantivo propio.<br>
+            * <strong>Función sintáctica (¿Qué rol ejerce?):</strong> Dependiendo del verbo, pueden operar como <strong>Sujeto</strong> (agente que ejecuta la acción) o como <strong>Objeto</strong> (entidad receptora o afectada por la acción).
+        </div>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Oración</th>
+                    <th>Palabra analizada</th>
+                    <th>Categoría</th>
+                    <th>Función sintáctica en el contexto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><em>The doctor arrived late.</em></td>
+                    <td><strong>The doctor</strong></td>
+                    <td>Frase nominal (Sustantivo)</td>
+                    <td><strong>Sujeto</strong> (realiza la acción <em>arrived</em>).</td>
+                </tr>
+                <tr>
+                    <td><em>We saw David at the mall.</em></td>
+                    <td><strong>David</strong></td>
+                    <td>Sustantivo propio</td>
+                    <td><strong>Objeto directo</strong> (recibe la acción de <em>saw</em>; el sujeto es <em>We</em>).</td>
+                </tr>
+                <tr>
+                    <td><em>They call me every evening.</em></td>
+                    <td><strong>They</strong></td>
+                    <td>Pronombre personal</td>
+                    <td><strong>Sujeto</strong> (reemplaza un grupo nominal y ejecuta <em>call</em>).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('practica')">Ir a la Actividad Práctica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: ACTIVIDAD PRÁCTICA -->
+    <div id="practica" class="content-section">
+        <h2>Actividad Práctica: Identificación de Categorías Gramaticales</h2>
+        <p>Analice el reactivo, identifique la categoría de la palabra en negrita y confirme su razonamiento desplegando la explicación pedagógica.</p>
+
+        <!-- Ejercicio 1 -->
+        <div class="question-card">
+            <p class="question-title">1. Sarah studied hard for the test, <strong>but</strong> she did not pass.</p>
+            <p>Seleccione la categoría gramatical:</p>
+            <p>A) Preposition &nbsp;&nbsp;|&nbsp;&nbsp; B) Conjunction &nbsp;&nbsp;|&nbsp;&nbsp; C) Adverb</p>
+            <button class="action-btn" onclick="toggleAnswer('prac1')">Ver Respuesta y Justificación</button>
+            <div id="prac1" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: B (Conjunction)</strong><br>
+                <em>Explicación:</em> <strong>But</strong> es una conjunción coordinante que enlaza dos cláusulas independientes para establecer una relación de contraste.
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="question-card">
+            <p class="question-title">2. My brother bought a <strong>beautiful</strong> guitar last weekend.</p>
+            <p>Seleccione la categoría gramatical:</p>
+            <p>A) Adjective &nbsp;&nbsp;|&nbsp;&nbsp; B) Noun &nbsp;&nbsp;|&nbsp;&nbsp; C) Verb</p>
+            <button class="action-btn" onclick="toggleAnswer('prac2')">Ver Respuesta y Justificación</button>
+            <div id="prac2" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: A (Adjective)</strong><br>
+                <em>Explicación:</em> <strong>Beautiful</strong> es un adjetivo calificativo cuya función es describir los atributos del sustantivo <em>guitar</em>.
+            </div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="question-card">
+            <p class="question-title">3. The students walked <strong>quickly</strong> to the classroom because it was raining.</p>
+            <p>Seleccione la categoría gramatical:</p>
+            <p>A) Verb &nbsp;&nbsp;|&nbsp;&nbsp; B) Adjective &nbsp;&nbsp;|&nbsp;&nbsp; C) Adverb</p>
+            <button class="action-btn" onclick="toggleAnswer('prac3')">Ver Respuesta y Justificación</button>
+            <div id="prac3" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: C (Adverb)</strong><br>
+                <em>Explicación:</em> <strong>Quickly</strong> es un adverbio de modo que modifica directamente al verbo <em>walked</em>, explicitando la manera en que ocurrió el desplazamiento.
+            </div>
+        </div>
+
+        <!-- Ejercicio 4 -->
+        <div class="question-card">
+            <p class="question-title">4. Carlos and Maria forgot <strong>their</strong> English notebooks at home.</p>
+            <p>Seleccione la categoría gramatical:</p>
+            <p>A) Pronoun &nbsp;&nbsp;|&nbsp;&nbsp; B) Preposition &nbsp;&nbsp;|&nbsp;&nbsp; C) Noun</p>
+            <button class="action-btn" onclick="toggleAnswer('prac4')">Ver Respuesta y Justificación</button>
+            <div id="prac4" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: A (Pronoun)</strong><br>
+                <em>Explicación:</em> <strong>Their</strong> opera dentro de la clase de determinantes/pronombres posesivos para denotar pertenencia respecto al antecedente <em>Carlos and Maria</em>.
+            </div>
+        </div>
+
+        <!-- Ejercicio 5 -->
+        <div class="question-card">
+            <p class="question-title">5. <strong>Wow!</strong> Look at that big rainbow in the sky!</p>
+            <p>Seleccione la categoría gramatical:</p>
+            <p>A) Preposition &nbsp;&nbsp;|&nbsp;&nbsp; B) Interjection &nbsp;&nbsp;|&nbsp;&nbsp; C) Conjunction</p>
+            <button class="action-btn" onclick="toggleAnswer('prac5')">Ver Respuesta y Justificación</button>
+            <div id="prac5" class="feedback-box feedback-success">
+                <strong>Respuesta correcta: B (Interjection)</strong><br>
+                <em>Explicación:</em> <strong>Wow!</strong> es una interjección autónoma que transmite una reacción espontánea de asombro o admiración.
+            </div>
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('evaluacion')">Proceder a la Evaluación Final →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: EVALUACIÓN -->
+    <div id="evaluacion" class="content-section">
+        <h2>Evaluación Formativa: Noun, Pronoun or Subject?</h2>
+        <p>Haga clic en la opción que considere correcta para cada enunciado. El sistema validará su elección de manera inmediata.</p>
+
+        <!-- Pregunta 1 -->
+        <div class="question-card" id="eval-group-1">
+            <p class="question-title">1. The doctor arrived late at the hospital this morning.<br>
+            En esta oración, la expresión <strong>The doctor</strong> es:</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'The doctor no recibe una acción ni actúa como complemento pronominal.')">A) Un pronombre de objeto</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', true, 'The doctor ejecuta el verbo principal (arrived). Aunque \'doctor\' es un sustantivo, sintácticamente la frase completa opera como el sujeto de la cláusula.')">B) El sujeto de la oración</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-1', false, 'No describe modo, tiempo ni lugar; hace referencia directa a la entidad agente.')">C) Un adverbio</div>
+            <div class="feedback-box" id="feedback-eval-group-1"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question-card" id="eval-group-2">
+            <p class="question-title">2. We saw David at the supermarket, but he didn't see us.<br>
+            En esta oración, la palabra <strong>David</strong> es:</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', true, 'David es el nombre propio de un individuo. No es el sujeto en este segmento porque quien ejecuta \'saw\' es el pronombre \'We\'; David funciona sintácticamente como objeto directo.')">A) Un sustantivo propio</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'David es un sustantivo propio, no un pronombre (los pronombres sujeto son I, you, he, she, it, we, they).')">B) Un pronombre sujeto</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-2', false, 'Quien ejecuta la acción de ver es \'We\'. David recibe la acción de \'saw\', ubicándose en posición de objeto.')">C) El sujeto de la oración</div>
+            <div class="feedback-box" id="feedback-eval-group-2"></div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question-card" id="eval-group-3">
+            <p class="question-title">3. My parents are traveling in Spain. <strong>They</strong> call me every evening.<br>
+            En la segunda oración, la palabra <strong>They</strong> es:</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'Un adjetivo posesivo requeriría acompañar a un sustantivo (por ejemplo: \'their house\').')">A) Un adjetivo posesivo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', true, 'They es un pronombre personal que sustituye anafóricamente a \'My parents\' y funge como sujeto ejecutor del verbo \'call\'.')">B) Un pronombre sujeto</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'eval-group-3', false, 'No es un sustantivo común; es un pronombre personal de tercera persona en plural.')">C) Un sustantivo común</div>
+            <div class="feedback-box" id="feedback-eval-group-3"></div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabMap = { 'inicio': 0, 'contenido': 1, 'practica': 2, 'evaluacion': 3 };
+            tabs[tabMap[tabId]].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('show');
+        }
+
+        function evaluateQuiz(selectedElement, groupId, isCorrect, explanation) {
+            const parent = document.getElementById(groupId);
+            const options = parent.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback-' + groupId);
+
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+
+            feedback.classList.remove('feedback-success', 'feedback-error');
+            feedback.classList.add('show');
+
+            if (isCorrect) {
+                selectedElement.classList.add('correct');
+                feedback.classList.add('feedback-success');
+                feedback.innerHTML = '<strong>Respuesta Correcta.</strong> ' + explanation;
+            } else {
+                selectedElement.classList.add('incorrect');
+                feedback.classList.add('feedback-error');
+                feedback.innerHTML = '<strong>Respuesta Incorrecta.</strong> ' + explanation;
+            }
+        }
+    </script>
+</body>
+</html>
