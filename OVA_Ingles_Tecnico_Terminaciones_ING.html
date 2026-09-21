@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: Terminaciones -ing en Inglés Técnico-Económico</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 22px;
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+        .nav-tabs {
+            display: flex;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14.5px;
+            transition: 0.25s ease;
+            color: #475569;
+        }
+        .tab.active, .tab:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .rule-banner {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 15.5px;
+            font-weight: 600;
+            text-align: center;
+            margin: 18px 0;
+            letter-spacing: 0.4px;
+        }
+        .theory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13.5px;
+        }
+        .theory-table th, .theory-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .theory-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .example-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 22px;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #1e293b;
+        }
+        .quiz-option {
+            display: block;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 12px 14px;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .quiz-option:hover {
+            background: #e2e8f0;
+        }
+        .correct {
+            background-color: #15803d !important;
+            color: #ffffff !important;
+            border-color: #166534 !important;
+        }
+        .incorrect {
+            background-color: #b91c1c !important;
+            color: #ffffff !important;
+            border-color: #991b1b !important;
+        }
+        .translation-input {
+            width: 100%;
+            padding: 10px 12px;
+            margin: 10px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 14px;
+            background-color: #f8fafc;
+        }
+        .translation-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            background-color: #ffffff;
+        }
+        button.action-btn {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13.5px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        button.action-btn:hover {
+            background-color: #334155;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 4px;
+            font-size: 13.5px;
+            display: none;
+            line-height: 1.5;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-success {
+            background-color: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+        .feedback-error {
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+        .badge-eval {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+        .nav-footer {
+            text-align: right;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Objeto Virtual de Aprendizaje (OVA)</h1>
+        <p>Distinción y Uso Funcional de las Terminaciones -ing en Inglés Técnico-Económico: Gerundio y Participio Presente</p>
+    </header>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('inicio')">1. Inicio y Objetivos</div>
+        <div class="tab" onclick="switchTab('contenido')">2. Explicación Teórica</div>
+        <div class="tab" onclick="switchTab('practica')">3. Actividad Práctica</div>
+        <div class="tab" onclick="switchTab('evaluacion')">4. Evaluación</div>
+    </div>
+
+    <!-- PESTAÑA 1: INICIO Y OBJETIVOS -->
+    <div id="inicio" class="content-section active">
+        <h2>Presentación del Módulo</h2>
+        <p>Bienvenido al módulo de profundización gramatical aplicada al ámbito económico. En el discurso financiero y empresarial en inglés, la terminación <strong>-ing</strong> cumple diversas funciones sintácticas cuyo reconocimiento preciso es indispensable para la interpretación y traducción de informes técnicos. Este entorno virtual le permitirá diferenciar con exactitud cuándo una estructura opera como sustantivo (gerundio), como verbo en forma progresiva o como adjetivo calificativo/especificativo.</p>
+        
+        <div class="rule-banner">
+            Principio esencial: En inglés técnico, la terminación -ing no equivale automáticamente a «-ando» o «-endo». Su valor depende de la función sintáctica.
+        </div>
+
+        <h3>Objetivos de Aprendizaje:</h3>
+        <p><strong>Objetivo General:</strong></p>
+        <ul>
+            <li>Diferenciar con precisión las funciones sintácticas de la terminación <strong>-ing</strong> (gerundio como sustantivo, participio presente como verbo y participio presente como adjetivo) en textos de inglés técnico-económico.</li>
+        </ul>
+        <p><strong>Objetivos Específicos:</strong></p>
+        <ul>
+            <li>Identificar la función gramatical de las palabras terminadas en <em>-ing</em> dentro de contextos oracionales financieros y corporativos.</li>
+            <li>Traducir al español oraciones especializadas manteniendo la equivalencia formal y semántica adecuada según la categoría sintáctica de la palabra analizada.</li>
+            <li>Evitar ambigüedades interpretativas derivadas de la homofonía estructural de las formas en <em>-ing</em>.</li>
+        </ul>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('contenido')">Iniciar Explicación Teórica →</button>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 2: EXPLICACIÓN TEÓRICA -->
+    <div id="contenido" class="content-section">
+        <h2>Fundamentación Sintáctica de las Formas en -ing</h2>
+        <p>En el discurso técnico-económico, las palabras terminadas en <strong>-ing</strong> no deben traducirse automáticamente con las desinencias en español <em>-ando</em> o <em>-endo</em>. Su interpretación y traducción dependen de la función sintáctica que ejerzan dentro de la estructura oracional:</p>
+
+        <h3>1. Gerundio con Función de Sustantivo (Gerund as Noun)</h3>
+        <p>El gerundio nominaliza una acción o proceso, otorgándole las propiedades sintácticas de un sustantivo dentro del enunciado.</p>
+        
+        <div class="example-box">
+            <strong>¡Atención a la posición en la oración!</strong><br>
+            Existe la creencia de que el gerundio solo aparece al inicio como sujeto de la frase. No obstante, puede ubicarse al principio, en el medio o al final de la oración, según el rol que desempeñe:
+            <ul>
+                <li><strong>Al principio (Sujeto de la oración):</strong><br>
+                <em>Ejemplo:</em> Investing in bonds is relatively safe.<br>
+                <em>Traducción:</em> Invertir en bonos es relativamente seguro.</li>
+                <li><strong>En el medio (Objeto directo de un verbo):</strong><br>
+                <em>Ejemplo:</em> The firm avoids borrowing money during a crisis.<br>
+                <em>Traducción:</em> La empresa evita pedir prestado dinero durante una crisis.</li>
+                <li><strong>Hacia el medio o al final (Término/objeto de una preposición):</strong><br>
+                <em>Regla clave:</em> Tras cualquier preposición (<em>for, in, by, about, before, after, of</em>), el verbo en inglés obligatoriamente toma la forma <em>-ing</em> y funciona como sustantivo.<br>
+                <em>Ejemplo:</em> The government designed a plan for developing the local industry.<br>
+                <em>Traducción:</em> El gobierno diseñó un plan para desarrollar la industria local.</li>
+            </ul>
+        </div>
+
+        <h3>2. Participio Presente con Función de Verbo (Present Participle as Verb)</h3>
+        <p>Indica una acción activa, dinámica y en progreso llevada a cabo por el sujeto. Para constituir un tiempo verbal continuo, la forma en <em>-ing</em> debe estar necesariamente acompañada por una forma conjugada del verbo auxiliar <strong>to be</strong>.</p>
+        
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Estructura Temporal</th>
+                    <th>Ejemplo Técnico</th>
+                    <th>Traducción Equivalente</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Presente continuo</strong></td>
+                    <td>The central bank <strong>is lowering</strong> interest rates.</td>
+                    <td>El banco central está bajando las tasas de interés.</td>
+                </tr>
+                <tr>
+                    <td><strong>Pasado continuo</strong></td>
+                    <td>The analysts <strong>were forecasting</strong> a decline in revenue.</td>
+                    <td>Los analistas estaban pronosticando una disminución en los ingresos.</td>
+                </tr>
+                <tr>
+                    <td><strong>Futuro continuo</strong></td>
+                    <td>The company <strong>will be cutting</strong> unnecessary expenses next quarter.</td>
+                    <td>La compañía estará reduciendo gastos innecesarios el próximo trimestre.</td>
+                </tr>
+                <tr>
+                    <td><strong>Presente perfecto continuo</strong></td>
+                    <td>The firm <strong>has been spending</strong> resources on modern infrastructure.</td>
+                    <td>La firma ha estado gastando recursos en infraestructura moderna.</td>
+                </tr>
+                <tr>
+                    <td><strong>Pasado perfecto continuo</strong></td>
+                    <td>They <strong>had been monitoring</strong> the market before the crash.</td>
+                    <td>Ellos habían estado monitoreando el mercado antes de la caída.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3. Participio Presente con Función de Adjetivo (Present Participle as Adjective)</h3>
+        <p>Describe, delimita o califica a un sustantivo, expresando una característica activa, una condición inherente o una tendencia.</p>
+
+        <div class="example-box">
+            <strong>Ubicación sintáctica y comportamiento con el verbo to be:</strong>
+            <ul>
+                <li><strong>Posición atributiva (delante del sustantivo):</strong> Modifica directamente al núcleo nominal.<br>
+                <em>Ejemplo:</em> We must control the growing inflation.<br>
+                <em>Traducción:</em> Debemos controlar la inflación creciente (o en crecimiento).</li>
+                <li><strong>Posición predicativa (después del verbo to be):</strong><br>
+                <em>Punto crítico:</em> Encontrarse después del verbo <em>to be</em> no siempre implica una función verbal. Cuando la palabra en <em>-ing</em> describe una cualidad o estado del sujeto y no una acción en progreso realizada por este, opera como un adjetivo predicativo.<br>
+                <em>Ejemplo:</em> The economic report is promising.<br>
+                <em>Traducción:</em> El informe económico es prometedor (califica la naturaleza del informe).</li>
+            </ul>
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('practica')">Ir a la Actividad Práctica →</button>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 3: ACTIVIDAD PRÁCTICA -->
+    <div id="practica" class="content-section">
+        <h2>Actividad Práctica: Análisis de Funciones Sintácticas</h2>
+        <p><strong>Instrucción para el estudiante:</strong> Lea con atención cada una de las siguientes oraciones del ámbito económico y determine la función sintáctica precisa del término destacado en negrita. Seleccione la opción correcta (A, B o C).</p>
+
+        <!-- Ejercicio 1 -->
+        <div class="question-card" id="prac-group-1">
+            <p class="question-title">Ejercicio 1:<br>The analysts are <strong>forecasting</strong> a recession in this market.</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-1', false, 'Incorrecto. Observe que la palabra no actua como sujeto ni como complemento de una preposicion; esta subordinada al verbo auxiliar are, por lo que constituye una accion verbal conjugada.')">A) Gerundio con función de sustantivo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-1', true, '¡Excelente! La palabra forecasting esta precedida por el auxiliar are, conformando el tiempo presente continuo para indicar la accion que ejecutan los analistas en este momento.')">B) Participio presente con función de verbo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-1', false, 'Incorrecto. En esta posicion sintactica, el termino no describe ni califica a un sustantivo adyacente, sino que expresa la accion directa de los analistas junto al verbo to be.')">C) Participio presente con función de adjetivo</div>
+            <div class="feedback-box" id="feedback-prac-group-1"></div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="question-card" id="prac-group-2">
+            <p class="question-title">Ejercicio 2:<br>The firm avoids <strong>borrowing</strong> money during a crisis.</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-2', true, '¡Respuesta acertada! Borrowing actua como el objeto directo del verbo avoids. Al funcionar como sustantivo, equivale en espanol al infinitivo: pedir prestado.')">A) Gerundio con función de sustantivo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-2', false, 'Incorrecto. Para ser un participio verbal continuo, requeriria la presencia del auxiliar to be (is/are borrowing). En esta estructura opera como el complemento sustantivo del verbo avoids.')">B) Participio presente con función de verbo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-2', false, 'Incorrecto. El termino no califica a ningun sustantivo; representa la accion nominalizada que la firma procura evitar.')">C) Participio presente con función de adjetivo</div>
+            <div class="feedback-box" id="feedback-prac-group-2"></div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="question-card" id="prac-group-3">
+            <p class="question-title">Ejercicio 3:<br>The <strong>falling</strong> prices surprised the investors.</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-3', false, 'Incorrecto. Aunque un gerundio puede formar sustantivos compuestos, en este caso falling funciona como un atributo adjetival directo que describe el comportamiento del sustantivo nuclear prices.')">A) Gerundio con función de sustantivo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-3', false, 'Incorrecto. No cumple funcion verbal activa en la oracion; el verbo principal conjugado de la proposicion es surprised.')">B) Participio presente con función de verbo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-3', true, '¡Muy bien! Falling antecede directamente al sustantivo prices, delimitandolo y describiendo la tendencia o condicion de los precios (precios en declive / en caida).')">C) Participio presente con función de adjetivo</div>
+            <div class="feedback-box" id="feedback-prac-group-3"></div>
+        </div>
+
+        <!-- Ejercicio 4 -->
+        <div class="question-card" id="prac-group-4">
+            <p class="question-title">Ejercicio 4:<br>The CEO is <strong>cutting</strong> unnecessary expenses in the firm.</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-4', false, 'Incorrecto. El termino no funge como nucleo nominal o sustantivo; junto con is, forma el nucleo del predicado.')">A) Gerundio con función de sustantivo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-4', true, '¡Correcto! La forma cutting se combina con el verbo auxiliar is para estructurar la perifrasis verbal en presente continuo (esta cortando/reduciendo).')">B) Participio presente con función de verbo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-4', false, 'Incorrecto. La palabra no esta atribuyendo una propiedad o modificando a un nombre, sino ejecutando la accion transitiva sobre el objeto expenses.')">C) Participio presente con función de adjetivo</div>
+            <div class="feedback-box" id="feedback-prac-group-4"></div>
+        </div>
+
+        <!-- Ejercicio 5 -->
+        <div class="question-card" id="prac-group-5">
+            <p class="question-title">Ejercicio 5:<br><strong>Managing</strong> a budget requires strict discipline.</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-5', true, '¡Excelente deduccion! Managing se posiciona como el nucleo del sujeto sintactico de la oracion principal, cuyo verbo rector es requires. Por ende, opera como gerundio nominal.')">A) Gerundio con función de sustantivo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-5', false, 'Incorrecto. No constituye una forma verbal finita o continua en este contexto; encabeza la clausula que desempena el rol de sujeto sintactico.')">B) Participio presente con función de verbo</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-5', false, 'Incorrecto. El termino no acompana a un sustantivo para calificarlo, sino que rige a a budget como su complemento directo en la posicion de sujeto.')">C) Participio presente con función de adjetivo</div>
+            <div class="feedback-box" id="feedback-prac-group-5"></div>
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('evaluacion')">Proceder a la Evaluación Final →</button>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 4: EVALUACIÓN -->
+    <div id="evaluacion" class="content-section">
+        <h2>Taller de Evaluación: Traducción y Análisis Especializado</h2>
+        <p><strong>Instrucción para el estudiante:</strong> Traduzca al español las siguientes oraciones técnicas en el recuadro correspondiente. Posteriormente, examine la retroalimentación para corroborar la función gramatical de la estructura en <em>-ing</em> y la fidelidad terminológica de su respuesta.</p>
+
+        <!-- Ejercicio 1 -->
+        <div class="question-card">
+            <span class="badge-eval">Ejercicio 1</span>
+            <p class="question-title">Oración en inglés: <strong>Leading the company requires strict discipline during a crisis.</strong></p>
+            <input type="text" class="translation-input" placeholder="Escriba aquí su traducción al español...">
+            <button class="action-btn" onclick="toggleAnswer('eval1')">Validar Traducción y Retroalimentación Gramatical</button>
+            <div id="eval1" class="feedback-box feedback-success">
+                <strong>Traducción esperada:</strong> Liderar (o encabezar) la empresa requiere estricta disciplina durante una crisis.<br><br>
+                <strong>Retroalimentación gramatical:</strong><br>
+                * <strong>Función:</strong> Gerundio con función de sustantivo.<br>
+                * <strong>Explicación:</strong> La forma <em>Leading</em> actúa como el sujeto gramatical de la oración principal vinculada al verbo <em>requires</em>. En español, el equivalente natural de un gerundio en posición de sujeto es la forma infinitiva (<em>Liderar</em>), nunca la terminación en <em>-ando</em> (<em>«Liderando la empresa requiere...»</em> resultaría agramatical).
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="question-card">
+            <span class="badge-eval">Ejercicio 2</span>
+            <p class="question-title">Oración en inglés: <strong>The government is spending more on infrastructure to support struggling companies.</strong></p>
+            <input type="text" class="translation-input" placeholder="Escriba aquí su traducción al español...">
+            <button class="action-btn" onclick="toggleAnswer('eval2')">Validar Traducción y Retroalimentación Gramatical</button>
+            <div id="eval2" class="feedback-box feedback-success">
+                <strong>Traducción esperada:</strong> El gobierno está gastando más en infraestructura para apoyar a las compañías en dificultades (o empresas en crisis).<br><br>
+                <strong>Retroalimentación gramatical:</strong><br>
+                * <strong>Función de spending:</strong> Participio presente con función de verbo. Al estar precedido por el auxiliar <em>is</em>, forma el tiempo presente continuo e indica la acción en progreso del sujeto (<em>El gobierno está gastando</em>).<br>
+                * <strong>Función de struggling:</strong> Participio presente con función de adjetivo. Modifica al sustantivo <em>companies</em>, describiendo su estado de vulnerabilidad financiera (<em>empresas en dificultades</em> o <em>en apuros</em>).
+            </div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="question-card">
+            <span class="badge-eval">Ejercicio 3</span>
+            <p class="question-title">Oración en inglés: <strong>Exporting goods is essential for developing the manufacturing sector.</strong></p>
+            <input type="text" class="translation-input" placeholder="Escriba aquí su traducción al español...">
+            <button class="action-btn" onclick="toggleAnswer('eval3')">Validar Traducción y Retroalimentación Gramatical</button>
+            <div id="eval3" class="feedback-box feedback-success">
+                <strong>Traducción esperada:</strong> Exportar bienes es esencial para desarrollar el sector manufacturero.<br><br>
+                <strong>Retroalimentación gramatical:</strong><br>
+                * <strong>Función de Exporting:</strong> Gerundio con función de sustantivo (sujeto oracional traducido como infinitivo: <em>Exportar</em>).<br>
+                * <strong>Función de developing:</strong> Gerundio con función de sustantivo regido por preposición (al estar precedido por <em>for</em>, se vierte al español en infinitivo: <em>desarrollar</em>).<br>
+                * <strong>Función de manufacturing:</strong> Participio con valor adjetival (determina al sustantivo <em>sector</em>: <em>sector manufacturero</em>).
+            </div>
+        </div>
+
+        <!-- Ejercicio 4 -->
+        <div class="question-card">
+            <span class="badge-eval">Ejercicio 4</span>
+            <p class="question-title">Oración en inglés: <strong>The existing laws delay lending money to new businesses.</strong></p>
+            <input type="text" class="translation-input" placeholder="Escriba aquí su traducción al español...">
+            <button class="action-btn" onclick="toggleAnswer('eval4')">Validar Traducción y Retroalimentación Gramatical</button>
+            <div id="eval4" class="feedback-box feedback-success">
+                <strong>Traducción esperada:</strong> Las leyes existentes retrasan prestar (o el préstamo de) dinero a nuevos negocios.<br><br>
+                <strong>Retroalimentación gramatical:</strong><br>
+                * <strong>Función de existing:</strong> Participio presente con función de adjetivo (modifica al sustantivo <em>laws</em> para expresar su vigencia: <em>leyes existentes</em>).<br>
+                * <strong>Función de lending:</strong> Gerundio con función de sustantivo (opera como el objeto directo del verbo <em>delay</em>; se traduce como infinitivo <em>prestar</em> o el sustantivo <em>el préstamo</em>).
+            </div>
+        </div>
+
+        <!-- Ejercicio 5 -->
+        <div class="question-card">
+            <span class="badge-eval">Ejercicio 5</span>
+            <p class="question-title">Oración en inglés: <strong>The central bank is lowering rates because of the rising inflation.</strong></p>
+            <input type="text" class="translation-input" placeholder="Escriba aquí su traducción al español...">
+            <button class="action-btn" onclick="toggleAnswer('eval5')">Validar Traducción y Retroalimentación Gramatical</button>
+            <div id="eval5" class="feedback-box feedback-success">
+                <strong>Traducción esperada:</strong> El banco central está bajando las tasas debido a la inflación creciente (o al alza de la inflación).<br><br>
+                <strong>Retroalimentación gramatical:</strong><br>
+                * <strong>Función de lowering:</strong> Participio presente con función de verbo (estructura el presente continuo junto con <em>is</em>: <em>está bajando</em>).<br>
+                * <strong>Función de rising:</strong> Participio presente con función de adjetivo (antepuesto al sustantivo <em>inflation</em>, describe el fenómeno de incremento o crecimiento del costo de vida: <em>inflación creciente</em> o <em>en aumento</em>).
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabMap = { 'inicio': 0, 'contenido': 1, 'practica': 2, 'evaluacion': 3 };
+            tabs[tabMap[tabId]].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('show');
+        }
+
+        function evaluateQuiz(selectedElement, groupId, isCorrect, explanation) {
+            const parent = document.getElementById(groupId);
+            const options = parent.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback-' + groupId);
+
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+
+            feedback.classList.remove('feedback-success', 'feedback-error');
+            feedback.classList.add('show');
+
+            if (isCorrect) {
+                selectedElement.classList.add('correct');
+                feedback.classList.add('feedback-success');
+                feedback.innerHTML = '<strong>Respuesta Correcta.</strong> ' + explanation;
+            } else {
+                selectedElement.classList.add('incorrect');
+                feedback.classList.add('feedback-error');
+                feedback.innerHTML = '<strong>Respuesta Incorrecta.</strong> ' + explanation;
+            }
+        }
+    </script>
+</body>
+</html>
