@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: Gerund vs. Infinitive (Nivel B2 - C1)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        header {
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 22px;
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #cbd5e1;
+        }
+        .nav-tabs {
+            display: flex;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .tab {
+            flex: 1;
+            padding: 14px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14.5px;
+            transition: 0.25s ease;
+            color: #475569;
+        }
+        .tab.active, .tab:hover {
+            background-color: #2563eb;
+            color: #ffffff;
+        }
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .rule-banner {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 15.5px;
+            font-weight: 600;
+            text-align: center;
+            margin: 18px 0;
+            letter-spacing: 0.4px;
+        }
+        .theory-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 13.5px;
+        }
+        .theory-table th, .theory-table td {
+            border: 1px solid #cbd5e1;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .theory-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .example-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 16px;
+            margin: 16px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 22px;
+        }
+        .question-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #1e293b;
+        }
+        .quiz-option {
+            display: block;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 12px 14px;
+            margin: 8px 0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 14px;
+        }
+        .quiz-option:hover {
+            background: #e2e8f0;
+        }
+        .quiz-option.selected {
+            background-color: #dbeafe !important;
+            border-color: #2563eb !important;
+            color: #1e40af !important;
+            font-weight: 600;
+        }
+        .correct {
+            background-color: #15803d !important;
+            color: #ffffff !important;
+            border-color: #166534 !important;
+        }
+        .incorrect {
+            background-color: #b91c1c !important;
+            color: #ffffff !important;
+            border-color: #991b1b !important;
+        }
+        button.action-btn {
+            background-color: #1e293b;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        button.action-btn:hover {
+            background-color: #334155;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 4px;
+            font-size: 13.5px;
+            display: none;
+            line-height: 1.5;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-success {
+            background-color: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+        .feedback-error {
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+        .score-box {
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            display: none;
+        }
+        .nav-footer {
+            text-align: right;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Objeto Virtual de Aprendizaje (OVA)</h1>
+        <p>Gerundio vs. Infinitivo (Gerund vs. Infinitive) — Nivel B2 - C1</p>
+    </header>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('inicio')">1. Inicio y Objetivos</div>
+        <div class="tab" onclick="switchTab('contenido')">2. Explicación Teórica</div>
+        <div class="tab" onclick="switchTab('practica')">3. Práctica Formativa</div>
+        <div class="tab" onclick="switchTab('evaluacion')">4. Evaluación Sumativa</div>
+    </div>
+
+    <!-- SECCIÓN 1: INICIO Y OBJETIVOS -->
+    <div id="inicio" class="content-section active">
+        <h2>Mensaje de Bienvenida</h2>
+        <p>¡Bienvenidos a este módulo! A menudo, decidir si el siguiente verbo en inglés debe terminar en <strong>-ing</strong> o llevar un <strong>to</strong> puede ser un dolor de cabeza. En este OVA, dominaremos estas estructuras esenciales para comunicarte con mayor naturalidad y para sobresalir en la sección de <em>Use of English</em> de tus exámenes.</p>
+        
+        <div class="rule-banner">
+            Clave del Nivel B2-C1: Dominar el régimen preposicional, fórmulas descriptivas y los cambios de significado léxico en verbos con doble patrón.
+        </div>
+
+        <h3>Objetivos de Aprendizaje:</h3>
+        <ul>
+            <li><strong>Diferenciar:</strong> Reconocer y aplicar las reglas gramaticales que exigen el uso de gerundios (<em>verb + -ing</em>) o infinitivos (<em>to + verb</em>).</li>
+            <li><strong>Discriminar significado:</strong> Identificar el cambio semántico en verbos de doble régimen (<em>stop, remember, try</em>) según la estructura sintáctica que los acompañe.</li>
+            <li><strong>Transferir:</strong> Aplicar estas estructuras correctamente en contextos escritos formales y conversacionales avanzados.</li>
+        </ul>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('contenido')">Iniciar Explicación Teórica →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: EXPLICACIÓN TEÓRICA -->
+    <div id="contenido" class="content-section">
+        <h2>Fundamentación Gramatical</h2>
+
+        <h3>Módulo A: Cuándo usar Gerundio (-ing)</h3>
+        <div class="example-box">
+            <ul>
+                <li><strong>Como sujeto de la oración:</strong> Nominaliza la acción para actuar como el núcleo del sujeto.<br><em>Ejemplo:</em> <strong>Learning</strong> English is fun.</li>
+                <li><strong>Verbos de gustos, disgustos y actitudes:</strong> Verbos que rigen gerundio obligatorio como <em>enjoy, hate, like, love, can't stand, regret, avoid, recommend, admit, deny</em>.</li>
+                <li><strong>Estructuras con preposiciones:</strong> Tras una preposición, el verbo se coloca obligatoriamente en forma <em>-ing</em> (<em>apologize for, insist on, feel like</em>).</li>
+                <li><strong>Después de Phrasal Verbs:</strong> La partícula del phrasal verb actúa preposicionalmente (<em>keep on, take up, give up, end up</em>).</li>
+            </ul>
+        </div>
+
+        <h3>Módulo B: Cuándo usar Infinitivo (to + verbo)</h3>
+        <div class="example-box">
+            <ul>
+                <li><strong>Fórmula descriptiva:</strong> Estructura impersonal para calificar acciones: <strong>It is + adjetivo + (for someone) + to + verbo</strong>.<br><em>Ejemplo:</em> It is hard for me <strong>to work</strong> on weekends.</li>
+                <li><strong>Verbos de decisión, logro o expectativa:</strong> Verbos que proyectan intenciones o metas hacia adelante (<em>manage, decide, afford, fail, be required, be supposed, be expected</em>).</li>
+                <li><strong>Verbo + Objeto + Infinitivo:</strong> Estructura donde se induce a otro sujeto a realizar una acción: <em>I want you <strong>to stop</strong></em>.</li>
+            </ul>
+        </div>
+
+        <h3>Módulo C: Los Verbos Tramposos (Cambio de Significado)</h3>
+        <p>Estos verbos admiten ambas estructuras, pero con diferencias conceptuales determinantes:</p>
+
+        <table class="theory-table">
+            <thead>
+                <tr>
+                    <th>Verbo</th>
+                    <th>Estructura con Infinitivo (to + verbo)</th>
+                    <th>Estructura con Gerundio (-ing)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Stop</strong></td>
+                    <td><strong>Parar con un propósito:</strong> Detener una actividad para hacer otra.<br><em>Ex:</em> We stopped <strong>to buy</strong> fish at the market.</td>
+                    <td><strong>Dejar un hábito:</strong> Abandonar o interrumpir definitivamente una acción.<br><em>Ex:</em> I stopped <strong>buying</strong> fish there.</td>
+                </tr>
+                <tr>
+                    <td><strong>Remember</strong></td>
+                    <td><strong>Recordar una tarea pendiente:</strong> Cumplir un deber a futuro.<br><em>Ex:</em> Remember <strong>to come</strong> at 5 to the party.</td>
+                    <td><strong>Evocar un recuerdo:</strong> Mirar al pasado hacia una vivencia previa.<br><em>Ex:</em> I remember <strong>coming</strong> at 5 to the party.</td>
+                </tr>
+                <tr>
+                    <td><strong>Try</strong></td>
+                    <td><strong>Intentar con esfuerzo:</strong> Procurar superar una dificultad compleja.<br><em>Ex:</em> Try <strong>to be</strong> more organized, please.</td>
+                    <td><strong>Experimentar:</strong> Probar un método nuevo a ver si funciona.<br><em>Ex:</em> Try <strong>organizing</strong> your time next time.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('practica')">Ir a la Práctica Formativa →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: ACTIVIDAD PRÁCTICA FORMATIVA -->
+    <div id="practica" class="content-section">
+        <h2>Actividad de Práctica Formativa</h2>
+        <p><strong>Instrucción:</strong> Elige la opción correcta para completar la frase. Lee atentamente la retroalimentación después de cada respuesta para aprender del error.</p>
+
+        <!-- Pregunta 1 -->
+        <div class="question-card" id="prac-group-1">
+            <p class="question-title">Pregunta 1:<br>You should avoid ________ in the city center during rush hour.</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-1', false, 'Recuerda que el verbo avoid (evitar) pertenece al grupo de verbos comunes que siempre van seguidos de un gerundio (-ing) tales como: enjoy, hate, like, love, can\'t stand, regret, recommend, admit, deny.')">A) to drive</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-1', true, '¡Excelente! El verbo avoid siempre exige que el siguiente verbo esté en gerundio, tal como los verbos: enjoy, hate, like, love, can\'t stand, regret, recommend, admit, deny.')">B) driving</div>
+            <div class="feedback-box" id="feedback-prac-group-1"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question-card" id="prac-group-2">
+            <p class="question-title">Pregunta 2:<br>It is hard for me ________ on weekends.</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-2', true, '¡Correcto! Estás aplicando perfectamente la estructura: It is + adjetivo + infinitivo.')">A) to work</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-2', false, 'Cuidado. Aquí estamos usando la fórmula descriptiva: It is + adjetivo (hard) - por lo tanto, necesitamos un infinitivo.')">B) working</div>
+            <div class="feedback-box" id="feedback-prac-group-2"></div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question-card" id="prac-group-3">
+            <p class="question-title">Pregunta 3:<br>I insist on ________ you next time!</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-3', false, '“on” es una preposición que acompaña al verbo insist por ende el verbo que sigue no puede empezar con “to”, sería doble preposición, aquí el verbo debe terminar en (-ing).')">A) to invite</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-3', true, '¡Correcto! Si el primer verbo es seguido de preposiciones cortas como “on”, “for” o “like” el siguiente verbo debe terminar en (-ing) sino, habría doble preposición con “to”.')">B) inviting</div>
+            <div class="feedback-box" id="feedback-prac-group-3"></div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question-card" id="prac-group-4">
+            <p class="question-title">Pregunta 4:<br>He stopped ________ fast food in the middle of the road.</p>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-4', true, '¡Muy bien! &quot;Stop + to eat&quot; significa que él se detuvo en su camino para ir a comer comida rápida.')">A) to eat = propósito</div>
+            <div class="quiz-option" onclick="evaluateQuiz(this, 'prac-group-4', false, 'Si usamos &quot;Stop + gerundio&quot; significa dejar de hacer una actividad o abandonar un hábito definitivamente. El contexto sugiere que se refiere a parar de conducir el auto con un propósito definido.')">B) eating = dejar un hábito</div>
+            <div class="feedback-box" id="feedback-prac-group-4"></div>
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('evaluacion')">Proceder a la Evaluación Sumativa →</button>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: EVALUACIÓN SUMATIVA -->
+    <div id="evaluacion" class="content-section">
+        <h2>Evaluación Sumativa Final</h2>
+        <p><strong>Instrucción:</strong> Completa las siguientes oraciones seleccionando la forma verbal correcta. En esta prueba sumativa no se mostrarán resultados inmediatos; una vez responda todas las preguntas, presione el botón inferior para calificar la evaluación completa y ver el análisis de aciertos y errores.</p>
+
+        <div id="eval-score-banner" class="score-box"></div>
+
+        <!-- Pregunta 1 Sumativa -->
+        <div class="question-card" id="sum-group-1">
+            <p class="question-title">Pregunta 1:<br>The company expects all employees ________ the training by Friday.</p>
+            <div class="quiz-option" data-option="A" onclick="selectSummative(this, 'sum-group-1', 'A')">A) finishing</div>
+            <div class="quiz-option" data-option="B" onclick="selectSummative(this, 'sum-group-1', 'B')">B) to finish</div>
+            <div class="feedback-box" id="feedback-sum-group-1"></div>
+        </div>
+
+        <!-- Pregunta 2 Sumativa -->
+        <div class="question-card" id="sum-group-2">
+            <p class="question-title">Pregunta 2:<br>________ three languages is a great advantage in today's job market.</p>
+            <div class="quiz-option" data-option="A" onclick="selectSummative(this, 'sum-group-2', 'A')">A) To speak</div>
+            <div class="quiz-option" data-option="B" onclick="selectSummative(this, 'sum-group-2', 'B')">B) Speaking</div>
+            <div class="feedback-box" id="feedback-sum-group-2"></div>
+        </div>
+
+        <!-- Pregunta 3 Sumativa -->
+        <div class="question-card" id="sum-group-3">
+            <p class="question-title">Pregunta 3:<br>He decided to give up ________ video games during the exam week.</p>
+            <div class="quiz-option" data-option="A" onclick="selectSummative(this, 'sum-group-3', 'A')">A) playing</div>
+            <div class="quiz-option" data-option="B" onclick="selectSummative(this, 'sum-group-3', 'B')">B) to play</div>
+            <div class="feedback-box" id="feedback-sum-group-3"></div>
+        </div>
+
+        <!-- Pregunta 4 Sumativa -->
+        <div class="question-card" id="sum-group-4">
+            <p class="question-title">Pregunta 4:<br>Please, remember ________ the lights before you leave the classroom.</p>
+            <div class="quiz-option" data-option="A" onclick="selectSummative(this, 'sum-group-4', 'A')">A) turning off</div>
+            <div class="quiz-option" data-option="B" onclick="selectSummative(this, 'sum-group-4', 'B')">B) to turn off</div>
+            <div class="feedback-box" id="feedback-sum-group-4"></div>
+        </div>
+
+        <!-- Pregunta 5 Sumativa -->
+        <div class="question-card" id="sum-group-5">
+            <p class="question-title">Pregunta 5:<br>If your computer is too slow, try ________ unnecessary files to free up space.</p>
+            <div class="quiz-option" data-option="A" onclick="selectSummative(this, 'sum-group-5', 'A')">A) deleting</div>
+            <div class="quiz-option" data-option="B" onclick="selectSummative(this, 'sum-group-5', 'B')">B) to delete</div>
+            <div class="feedback-box" id="feedback-sum-group-5"></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="action-btn" style="background-color: #2563eb; font-size: 15px; padding: 12px 28px;" onclick="calculateFinalScore()">Enviar y Calificar Evaluación</button>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabMap = { 'inicio': 0, 'contenido': 1, 'practica': 2, 'evaluacion': 3 };
+            tabs[tabMap[tabId]].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function evaluateQuiz(selectedElement, groupId, isCorrect, explanation) {
+            const parent = document.getElementById(groupId);
+            const options = parent.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById('feedback-' + groupId);
+
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'incorrect');
+            });
+
+            feedback.classList.remove('feedback-success', 'feedback-error');
+            feedback.classList.add('show');
+
+            if (isCorrect) {
+                selectedElement.classList.add('correct');
+                feedback.classList.add('feedback-success');
+                feedback.innerHTML = '<strong>Respuesta Correcta.</strong> ' + explanation;
+            } else {
+                selectedElement.classList.add('incorrect');
+                feedback.classList.add('feedback-error');
+                feedback.innerHTML = '<strong>Respuesta Incorrecta.</strong> ' + explanation;
+            }
+        }
+
+        const summativeAnswers = {};
+        const summativeKey = {
+            'sum-group-1': { 
+                correct: 'B', 
+                pos: 'Correcto. Expect marca una expectativa/obligación y va con infinitivo.', 
+                neg: 'Incorrecto. Los verbos de expectativa como expect, require o be supposed to siempre van seguidos de infinitivo (to finish).' 
+            },
+            'sum-group-2': { 
+                correct: 'B', 
+                pos: 'Correcto. La acción es el sujeto de la frase.', 
+                neg: 'Incorrecto. Al comenzar una frase convirtiendo una acción en el sujeto principal, debes usar el gerundio (Speaking).' 
+            },
+            'sum-group-3': { 
+                correct: 'A', 
+                pos: 'Correcto. Después del phrasal verb give up va gerundio.', 
+                neg: 'Incorrecto. Give up es un phrasal verb. Recuerda que los verbos que siguen a un phrasal verb deben ir con terminación -ing (playing).' 
+            },
+            'sum-group-4': { 
+                correct: 'B', 
+                pos: 'Correcto. Es una instrucción para el futuro, no un recuerdo del pasado.', 
+                neg: 'Incorrecto. No es un recuerdo, por ende no puede terminar en ING. Aquí como se está dando una instrucción se usa el infinitivo (to turn off).' 
+            },
+            'sum-group-5': { 
+                correct: 'A', 
+                pos: 'Correcto. Estás sugiriendo experimentar con una solución a ver si funciona.', 
+                neg: 'Incorrecto. No se trata de hacer un esfuerzo físico o mental extraordinario (try to do), sino de experimentar un método nuevo para ver si soluciona el problema (try doing).' 
+            }
+        };
+
+        function selectSummative(selectedElement, groupId, optionLetter) {
+            summativeAnswers[groupId] = optionLetter;
+            const parent = document.getElementById(groupId);
+            const options = parent.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            selectedElement.classList.add('selected');
+        }
+
+        function calculateFinalScore() {
+            let score = 0;
+            const total = 5;
+
+            for (let group in summativeKey) {
+                const userChoice = summativeAnswers[group];
+                const feedbackEl = document.getElementById('feedback-' + group);
+                const parent = document.getElementById(group);
+                const options = parent.querySelectorAll('.quiz-option');
+
+                feedbackEl.classList.remove('feedback-success', 'feedback-error');
+                feedbackEl.classList.add('show');
+
+                if (userChoice) {
+                    if (userChoice === summativeKey[group].correct) {
+                        score++;
+                        feedbackEl.classList.add('feedback-success');
+                        feedbackEl.innerHTML = '<strong>' + summativeKey[group].pos + '</strong>';
+                    } else {
+                        feedbackEl.classList.add('feedback-error');
+                        feedbackEl.innerHTML = '<strong>' + summativeKey[group].neg + '</strong>';
+                    }
+
+                    options.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                        const val = opt.getAttribute('data-option');
+                        if (val === summativeKey[group].correct) {
+                            opt.classList.add('correct');
+                        } else if (val === userChoice) {
+                            opt.classList.add('incorrect');
+                        }
+                    });
+                } else {
+                    feedbackEl.classList.add('feedback-error');
+                    feedbackEl.innerHTML = '<strong>Sin responder:</strong> La respuesta correcta era la opción ' + summativeKey[group].correct + '. ' + summativeKey[group].neg;
+                    options.forEach(opt => {
+                        opt.classList.remove('correct', 'incorrect');
+                        if (opt.getAttribute('data-option') === summativeKey[group].correct) {
+                            opt.classList.add('correct');
+                        }
+                    });
+                }
+            }
+
+            const banner = document.getElementById('eval-score-banner');
+            banner.style.display = 'block';
+            banner.innerHTML = 'Puntuación Final: ' + score + ' / ' + total + ' aciertos (' + Math.round((score / total) * 100) + '%)';
+            banner.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
