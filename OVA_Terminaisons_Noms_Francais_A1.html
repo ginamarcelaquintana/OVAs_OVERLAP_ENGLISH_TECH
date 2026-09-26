@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVA: Les Terminaisons des Noms (A1)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #0f172a;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8fafc;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3a8a, #0284c7);
+            color: #ffffff;
+            padding: 26px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0 0 6px 0;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        header p {
+            margin: 0;
+            font-size: 15px;
+            color: #e0f2fe;
+        }
+        .nav-tabs {
+            display: flex;
+            background-color: #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 22px;
+        }
+        .tab {
+            flex: 1;
+            padding: 13px 10px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.25s ease;
+            color: #475569;
+        }
+        .tab.active, .tab:hover {
+            background-color: #0284c7;
+            color: #ffffff;
+        }
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .rule-banner {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 16px 20px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            margin: 18px 0;
+            line-height: 1.5;
+        }
+        .grid-tables {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 18px;
+        }
+        @media(max-width: 768px) {
+            .grid-tables {
+                grid-template-columns: 1fr;
+            }
+        }
+        .table-card {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #cbd5e1;
+        }
+        .table-card h3 {
+            margin: 0;
+            padding: 12px 16px;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+        }
+        .table-masc h3 {
+            background-color: #2563eb;
+        }
+        .table-fem h3 {
+            background-color: #db2777;
+        }
+        table.ref-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+        table.ref-table th, table.ref-table td {
+            padding: 9px 12px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+        table.ref-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        .question-title {
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #0f172a;
+        }
+        .options-container {
+            display: flex;
+            gap: 14px;
+        }
+        .quiz-btn {
+            flex: 1;
+            background: #ffffff;
+            color: #0f172a !important;
+            border: 2px solid #94a3b8;
+            padding: 12px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14.5px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .quiz-btn:hover {
+            background: #f1f5f9;
+            border-color: #0284c7;
+            color: #0284c7 !important;
+        }
+        .quiz-btn.correct {
+            background-color: #15803d !important;
+            color: #ffffff !important;
+            border-color: #166534 !important;
+        }
+        .quiz-btn.incorrect {
+            background-color: #b91c1c !important;
+            color: #ffffff !important;
+            border-color: #991b1b !important;
+        }
+        .feedback-box {
+            margin-top: 12px;
+            padding: 12px 14px;
+            border-radius: 6px;
+            font-size: 14px;
+            display: none;
+            line-height: 1.5;
+        }
+        .feedback-box.show {
+            display: block;
+        }
+        .feedback-success {
+            background-color: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+        }
+        .feedback-error {
+            background-color: #fee2e2;
+            border: 1px solid #fca5a5;
+            color: #991b1b;
+        }
+        .eval-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+            margin-top: 18px;
+        }
+        .eval-card {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .eval-sentence-line {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .eval-inline-input {
+            width: 72px;
+            padding: 6px 10px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            border: 2px solid #94a3b8;
+            border-radius: 6px;
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .eval-inline-input:focus {
+            outline: none;
+            border-color: #0284c7;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+            background-color: #ffffff !important;
+        }
+        .eval-inline-input.correct-input {
+            border-color: #16a34a !important;
+            background-color: #f0fdf4 !important;
+            color: #166534 !important;
+        }
+        .eval-inline-input.incorrect-input {
+            border-color: #dc2626 !important;
+            background-color: #fef2f2 !important;
+            color: #991b1b !important;
+        }
+        .eval-fb {
+            margin-top: 10px;
+            font-size: 13px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.45;
+        }
+        .score-banner {
+            background: #0f172a;
+            color: #38bdf8;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+            display: none;
+        }
+        button.action-btn {
+            background-color: #0284c7;
+            color: #ffffff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        button.action-btn:hover {
+            background-color: #0369a1;
+        }
+        .nav-footer {
+            text-align: right;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Objeto Virtual de Aprendizaje (OVA)</h1>
+        <p>Les Terminaisons des Noms en Français — Genre et Articles Définis (Niveau A1)</p>
+    </header>
+
+    <div class="nav-tabs">
+        <div class="tab active" onclick="switchTab('inicio')">1. Inicio y Objetivos</div>
+        <div class="tab" onclick="switchTab('teoria')">2. Explicación Teórica</div>
+        <div class="tab" onclick="switchTab('practica')">3. Práctica de Género</div>
+        <div class="tab" onclick="switchTab('evaluacion')">4. Evaluación de Artículos</div>
+    </div>
+
+    <!-- PESTAÑA 1: INICIO Y OBJETIVOS -->
+    <div id="inicio" class="content-section active">
+        <h2>Presentación del Módulo</h2>
+        <p>Bienvenido al módulo interactivo de morfología nominal en lengua francesa. Determinar el género gramatical (<em>masculin ou féminin</em>) de un sustantivo es un paso crucial en el nivel A1 para seleccionar con precisión los artículos definidos (<strong>le, la, l'</strong>) e indefinidos (<strong>un, une</strong>), así como para concertar adjetivos. A través de este recurso, interiorizará las desinencias y terminaciones regulares más productivas de la lengua francesa para deducir el género de cualquier palabra sin necesidad de memorizarla aisladamente.</p>
+        
+        <div class="rule-banner">
+            Règle d'or : La terminaison d'un mot donne un indice direct sur son genre grammatical !
+        </div>
+
+        <h3>Objetivos de Aprendizaje:</h3>
+        <p><strong>Objetivo General:</strong></p>
+        <ul>
+            <li>Identificar el género de los sustantivos en francés (masculino o femenino) a través de sus terminaciones morfológicas para utilizar correctamente los artículos definidos correspondientes.</li>
+        </ul>
+
+        <p><strong>Objetivos Específicos:</strong></p>
+        <ul>
+            <li>Reconocer los patrones fonéticos y ortográficos característicos de las 13 terminaciones masculinas prioritarias (<em>-age, -al, -eau, -ent, -et, -isme, -in, -oir, -ment, -ail, -eil, -ouil, -euil</em>).</li>
+            <li>Identificar con precisión las 14 terminaciones que determinan el género femenino de los sustantivos (<em>-ade, -ance/-ence, -ée, -elle, -ette, -ie, -ine, -ise, -tion/-sion, -eille, -ouille, -euille, -té, -ure</em>).</li>
+            <li>Diferenciar y aplicar el artículo definido elidido <strong>l'</strong> ante sustantivos de género masculino o femenino que inicien por vocal o h muda, evitando la cacofonía y reconociendo el fenómeno de elisión.</li>
+            <li>Consolidar la autonomía léxica en nivel inicial mediante la deducción morfológica del género en contextos de lectura y expresión escrita.</li>
+        </ul>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('teoria')">Explorar la Regla Teórica →</button>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 2: TEORÍA -->
+    <div id="teoria" class="content-section">
+        <h2>Fase 1: Explicación Teórica</h2>
+        <p><strong>Instrucción para el estudiante:</strong> Lee detenidamente la tabla a continuación, asimilando cuáles terminaciones le corresponden a cada género. En francés, la desinencia o terminación de una palabra te brinda una pista fundamental y sistemática para reconocer si es un sustantivo masculino o femenino.</p>
+
+        <div class="grid-tables">
+            <!-- TABLA MASCULINO -->
+            <div class="table-card table-masc">
+                <h3>Terminaciones Masculinas</h3>
+                <table class="ref-table">
+                    <thead>
+                        <tr><th>Terminación</th><th>Ejemplo Francés</th><th>Significado en Español</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>-age</strong></td><td>le garage</td><td>el garaje</td></tr>
+                        <tr><td><strong>-al</strong></td><td>le journal</td><td>el periódico</td></tr>
+                        <tr><td><strong>-eau</strong></td><td>le bateau</td><td>el barco</td></tr>
+                        <tr><td><strong>-ent</strong></td><td>le segment</td><td>el segmento</td></tr>
+                        <tr><td><strong>-et</strong></td><td>le billet</td><td>el billete / el ticket</td></tr>
+                        <tr><td><strong>-isme</strong></td><td>le tourisme</td><td>el turismo</td></tr>
+                        <tr><td><strong>-in</strong></td><td>le cousin</td><td>el primo</td></tr>
+                        <tr><td><strong>-oir</strong></td><td>le miroir</td><td>el espejo</td></tr>
+                        <tr><td><strong>-ment</strong></td><td>l'enregistrement</td><td>el audio / la grabación</td></tr>
+                        <tr><td><strong>-ail</strong></td><td>le travail</td><td>el trabajo</td></tr>
+                        <tr><td><strong>-eil</strong></td><td>le réveil</td><td>el despertador</td></tr>
+                        <tr><td><strong>-ouil</strong></td><td>le fenouil</td><td>el hinojo</td></tr>
+                        <tr><td><strong>-euil</strong></td><td>le fauteuil</td><td>el sillón</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- TABLA FEMENINO -->
+            <div class="table-card table-fem">
+                <h3>Terminaciones Femeninas</h3>
+                <table class="ref-table">
+                    <thead>
+                        <tr><th>Terminación</th><th>Ejemplo Francés</th><th>Significado en Español</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>-ade</strong></td><td>la pommade</td><td>la pomada</td></tr>
+                        <tr><td><strong>-ance / -ence</strong></td><td>l'ambulance</td><td>la ambulancia</td></tr>
+                        <tr><td><strong>-ée</strong></td><td>l'arrivée</td><td>la llegada</td></tr>
+                        <tr><td><strong>-elle</strong></td><td>la mademoiselle</td><td>la señorita</td></tr>
+                        <tr><td><strong>-ette</strong></td><td>la cigarette</td><td>el cigarrillo</td></tr>
+                        <tr><td><strong>-ie</strong></td><td>la géologie</td><td>la geología</td></tr>
+                        <tr><td><strong>-ine</strong></td><td>la cuisine</td><td>la cocina</td></tr>
+                        <tr><td><strong>-ise</strong></td><td>la surprise</td><td>la sorpresa</td></tr>
+                        <tr><td><strong>-tion / -sion</strong></td><td>la nation</td><td>la nación</td></tr>
+                        <tr><td><strong>-eille</strong></td><td>la bouteille</td><td>la botella</td></tr>
+                        <tr><td><strong>-ouille</strong></td><td>la grenouille</td><td>la rana</td></tr>
+                        <tr><td><strong>-euille</strong></td><td>la feuille</td><td>la hoja</td></tr>
+                        <tr><td><strong>-té</strong></td><td>la confidentialité</td><td>la confidencialidad</td></tr>
+                        <tr><td><strong>-ure</strong></td><td>la culture</td><td>la cultura</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="rule-banner" style="margin-top: 25px;">
+            Attention particulière : Devant une voyelle ou un h muet, « le » ou « la » devient obligatoirement « l' » (l'arbre, l'amie, l'école, l'homme) !
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('practica')">Ir a la Práctica Interactiva →</button>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 3: PRÁCTICA -->
+    <div id="practica" class="content-section">
+        <h2>Fase 2: Práctica de Identificación de Género</h2>
+        <p><strong>Instrucción para el estudiante:</strong> Lee cada palabra en francés. Fíjate exclusivamente en su terminación morfológica y selecciona si es <strong>Femenino</strong> o <strong>Masculino</strong>. Los ejercicios se presentan desordenados para reforzar tu capacidad de análisis sin apoyos de traducción previa. Recibirás la retroalimentación inmediata con la justificación y su traducción completa.</p>
+
+        <div id="practica-container">
+            <!-- Contenido dinámico aleatorizado sin traducción en el enunciado -->
+        </div>
+
+        <div class="nav-footer">
+            <button class="action-btn" onclick="switchTab('evaluacion')">Proceder a la Evaluación Final →</button>
+        </div>
+    </div>
+
+    <!-- PESTAÑA 4: EVALUACIÓN -->
+    <div id="evaluacion" class="content-section">
+        <h2>Fase 3: Evaluación de Artículos Definidos</h2>
+        <p><strong>Instrucción para el estudiante:</strong> Escribe en el espacio en blanco el artículo definido exacto (<strong>le</strong>, <strong>la</strong>, o <strong>l'</strong>) que corresponde a cada palabra según su terminación y su letra inicial (vocal o consonante). La traducción al español y la explicación gramatical detallada se desplegarán al calificar la prueba.</p>
+
+        <div id="eval-score" class="score-banner"></div>
+
+        <div class="eval-grid" id="eval-container">
+            <!-- Contenido dinámico con input en línea integrada -->
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="action-btn" style="padding: 14px 32px; font-size: 16px;" onclick="calificarEvaluacion()">Calificar Evaluación y Ver Retroalimentación Completa</button>
+        </div>
+    </div>
+
+    <script>
+        const datosPracticaBase = [{"french": "vent", "es": "el viento", "correct": "B", "ending": "-ent", "gender": "masculino"}, {"french": "document", "es": "el documento", "correct": "B", "ending": "-ent", "gender": "masculino"}, {"french": "poulet", "es": "el pollo", "correct": "B", "ending": "-et", "gender": "masculino"}, {"french": "projet", "es": "el proyecto", "correct": "B", "ending": "-et", "gender": "masculino"}, {"french": "sujet", "es": "el tema", "correct": "B", "ending": "-et", "gender": "masculino"}, {"french": "journalisme", "es": "el periodismo", "correct": "B", "ending": "-isme", "gender": "masculino"}, {"french": "cyclisme", "es": "el ciclismo", "correct": "B", "ending": "-isme", "gender": "masculino"}, {"french": "optimisme", "es": "el optimismo", "correct": "B", "ending": "-isme", "gender": "masculino"}, {"french": "matin", "es": "la mañana", "correct": "B", "ending": "-in", "gender": "masculino"}, {"french": "jardin", "es": "el jardín", "correct": "B", "ending": "-in", "gender": "masculino"}, {"french": "magasin", "es": "la tienda", "correct": "B", "ending": "-in", "gender": "masculino"}, {"french": "soir", "es": "la tarde / la noche", "correct": "B", "ending": "-oir", "gender": "masculino"}, {"french": "devoir", "es": "la tarea / el deber", "correct": "B", "ending": "-oir", "gender": "masculino"}, {"french": "couloir", "es": "el pasillo", "correct": "B", "ending": "-oir", "gender": "masculino"}, {"french": "vêtement", "es": "la prenda de vestir", "correct": "B", "ending": "-ment", "gender": "masculino"}, {"french": "bâtiment", "es": "el edificio", "correct": "B", "ending": "-ment", "gender": "masculino"}, {"french": "appartement", "es": "el apartamento", "correct": "B", "ending": "-ment", "gender": "masculino"}, {"french": "détail", "es": "el detalle", "correct": "B", "ending": "-ail", "gender": "masculino"}, {"french": "chandail", "es": "el suéter", "correct": "B", "ending": "-ail", "gender": "masculino"}, {"french": "ail", "es": "el ajo", "correct": "B", "ending": "-ail", "gender": "masculino"}, {"french": "soleil", "es": "el sol", "correct": "B", "ending": "-eil", "gender": "masculino"}, {"french": "sommeil", "es": "el sueño", "correct": "B", "ending": "-eil", "gender": "masculino"}, {"french": "appareil", "es": "el aparato", "correct": "B", "ending": "-eil", "gender": "masculino"}, {"french": "bafouil", "es": "el balbuceo", "correct": "B", "ending": "-ouil", "gender": "masculino"}, {"french": "chatouil", "es": "el cosquilleo", "correct": "B", "ending": "-ouil", "gender": "masculino"}, {"french": "bredouil", "es": "el balbuceo", "correct": "B", "ending": "-ouil", "gender": "masculino"}, {"french": "écureuil", "es": "la ardilla", "correct": "B", "ending": "-euil", "gender": "masculino"}, {"french": "deuil", "es": "el luto", "correct": "B", "ending": "-euil", "gender": "masculino"}, {"french": "accueil", "es": "la recepción", "correct": "B", "ending": "-euil", "gender": "masculino"}, {"french": "salade", "es": "la ensalada", "correct": "A", "ending": "-ade", "gender": "femenino"}, {"french": "promenade", "es": "el paseo", "correct": "A", "ending": "-ade", "gender": "femenino"}, {"french": "limonade", "es": "la limonada", "correct": "A", "ending": "-ade", "gender": "femenino"}, {"french": "chance", "es": "la suerte", "correct": "A", "ending": "-ance / -ence", "gender": "femenino"}, {"french": "différence", "es": "la diferencia", "correct": "A", "ending": "-ance / -ence", "gender": "femenino"}, {"french": "expérience", "es": "la experiencia", "correct": "A", "ending": "-ance / -ence", "gender": "femenino"}, {"french": "année", "es": "el año", "correct": "A", "ending": "-ée", "gender": "femenino"}, {"french": "journée", "es": "el día", "correct": "A", "ending": "-ée", "gender": "femenino"}, {"french": "soirée", "es": "la velada", "correct": "A", "ending": "-ée", "gender": "femenino"}, {"french": "poubelle", "es": "la basura", "correct": "A", "ending": "-elle", "gender": "femenino"}, {"french": "vaisselle", "es": "la vajilla", "correct": "A", "ending": "-elle", "gender": "femenino"}, {"french": "nouvelle", "es": "la noticia", "correct": "A", "ending": "-elle", "gender": "femenino"}, {"french": "recette", "es": "la receta", "correct": "A", "ending": "-ette", "gender": "femenino"}, {"french": "raquette", "es": "la raqueta", "correct": "A", "ending": "-ette", "gender": "femenino"}, {"french": "toilette", "es": "el baño", "correct": "A", "ending": "-ette", "gender": "femenino"}, {"french": "vie", "es": "la vida", "correct": "A", "ending": "-ie", "gender": "femenino"}, {"french": "pharmacie", "es": "la farmacia", "correct": "A", "ending": "-ie", "gender": "femenino"}, {"french": "boulangerie", "es": "la panadería", "correct": "A", "ending": "-ie", "gender": "femenino"}, {"french": "copine", "es": "la amiga", "correct": "A", "ending": "-ine", "gender": "femenino"}, {"french": "piscine", "es": "la piscina", "correct": "A", "ending": "-ine", "gender": "femenino"}, {"french": "machine", "es": "la máquina", "correct": "A", "ending": "-ine", "gender": "femenino"}, {"french": "valise", "es": "la maleta", "correct": "A", "ending": "-ise", "gender": "femenino"}, {"french": "église", "es": "la iglesia", "correct": "A", "ending": "-ise", "gender": "femenino"}, {"french": "chemise", "es": "la camisa", "correct": "A", "ending": "-ise", "gender": "femenino"}, {"french": "question", "es": "la pregunta", "correct": "A", "ending": "-tion / -sion", "gender": "femenino"}, {"french": "information", "es": "la información", "correct": "A", "ending": "-tion / -sion", "gender": "femenino"}, {"french": "télévision", "es": "la televisión", "correct": "A", "ending": "-tion / -sion", "gender": "femenino"}, {"french": "oreille", "es": "la oreja", "correct": "A", "ending": "-eille", "gender": "femenino"}, {"french": "abeille", "es": "la abeja", "correct": "A", "ending": "-eille", "gender": "femenino"}, {"french": "merveille", "es": "la maravilla", "correct": "A", "ending": "-eille", "gender": "femenino"}, {"french": "citrouille", "es": "la calabaza", "correct": "A", "ending": "-ouille", "gender": "femenino"}, {"french": "nouille", "es": "el fideo", "correct": "A", "ending": "-ouille", "gender": "femenino"}, {"french": "patrouille", "es": "la patrulla", "correct": "A", "ending": "-ouille", "gender": "femenino"}, {"french": "millefeuille", "es": "la milenrama", "correct": "A", "ending": "-euille", "gender": "femenino"}, {"french": "chèvrefeuille", "es": "la madreselva", "correct": "A", "ending": "-euille", "gender": "femenino"}, {"french": "sous-feuille", "es": "la capa inferior de hojas", "correct": "A", "ending": "-euille", "gender": "femenino"}, {"french": "santé", "es": "la salud", "correct": "A", "ending": "-té", "gender": "femenino"}, {"french": "société", "es": "la sociedad", "correct": "A", "ending": "-té", "gender": "femenino"}, {"french": "liberté", "es": "la libertad", "correct": "A", "ending": "-té", "gender": "femenino"}, {"french": "voiture", "es": "el coche / el carro", "correct": "A", "ending": "-ure", "gender": "femenino"}, {"french": "nature", "es": "la naturaleza", "correct": "A", "ending": "-ure", "gender": "femenino"}, {"french": "lecture", "es": "la lectura", "correct": "A", "ending": "-ure", "gender": "femenino"}];
+        const datosEvaluacionBase = [{"french": "signal", "es": "la señal", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -al."}, {"french": "bicyclette", "es": "la bicicleta", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ette."}, {"french": "médicament", "es": "el medicamento", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -ment."}, {"french": "confiture", "es": "la mermelada", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ure."}, {"french": "chapeau", "es": "el sombrero", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -eau."}, {"french": "façade", "es": "la fachada", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ade."}, {"french": "tiroir", "es": "el cajón", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -oir."}, {"french": "université", "es": "la universidad", "ans": "l'", "fb": "Su terminación en -té indica que es femenina, pero como empieza por vocal, obligatoriamente debes usar l'."}, {"french": "racisme", "es": "el racismo", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -isme."}, {"french": "maladie", "es": "la enfermedad", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ie."}, {"french": "conseil", "es": "el consejo", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -eil."}, {"french": "entrée", "es": "la entrada", "ans": "l'", "fb": "Su terminación en -ée indica que es femenina, pero como empieza por vocal, obligatoriamente debes usar l'."}, {"french": "pouvoir", "es": "el poder", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -oir."}, {"french": "marmelade", "es": "la mermelada", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ade."}, {"french": "carnet", "es": "la libreta", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -et."}, {"french": "attention", "es": "la atención", "ans": "l'", "fb": "Su terminación en -tion indica que es femenina, pero como empieza por vocal, obligatoriamente debes usar l'."}, {"french": "festival", "es": "el festival", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -al."}, {"french": "corbeille", "es": "la papelera", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -eille."}, {"french": "nuage", "es": "la nube", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -age."}, {"french": "vitrine", "es": "la vitrina", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ine."}, {"french": "orteil", "es": "el dedo del pie", "ans": "l'", "fb": "Su terminación en -eil indica que es masculina, pero como empieza por vocal, obligatoriamente debes usar l'."}, {"french": "fouille", "es": "la búsqueda", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ouille."}, {"french": "manteau", "es": "el abrigo", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -eau."}, {"french": "présence", "es": "la presencia", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ence."}, {"french": "chemin", "es": "el camino", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -in."}, {"french": "beauté", "es": "la belleza", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -té."}, {"french": "réalisme", "es": "el realismo", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -isme."}, {"french": "jumelle", "es": "la gemela", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -elle."}, {"french": "village", "es": "el pueblo", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -age."}, {"french": "importance", "es": "la importancia", "ans": "l'", "fb": "Su terminación en -ance indica que es femenina, pero como empieza por vocal, obligatoriamente debes usar l'."}, {"french": "accent", "es": "el acento", "ans": "l'", "fb": "Su terminación en -ent indica que es masculina, pero como empieza por vocal, obligatoriamente debes usar l'."}, {"french": "bise", "es": "el beso", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ise."}, {"french": "gouvernement", "es": "el gobierno", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -ment."}, {"french": "chatouille", "es": "la cosquilla", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ouille."}, {"french": "secret", "es": "el secreto", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -et."}, {"french": "chaussure", "es": "el zapato", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ure."}, {"french": "portail", "es": "el portal", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -ail."}, {"french": "idée", "es": "la idea", "ans": "l'", "fb": "Su terminación en -ée indica que es femenina, pero como empieza por vocal, obligatoriamente debes usar l'."}, {"french": "médecin", "es": "el médico", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -in."}, {"french": "sortie", "es": "la salida", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ie."}, {"french": "patouil", "es": "el chapoteo", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -ouil."}, {"french": "maternelle", "es": "el preescolar", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -elle."}, {"french": "vitrail", "es": "el vitral", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -ail."}, {"french": "profession", "es": "la profesión", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -sion."}, {"french": "moment", "es": "el momento", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -ent."}, {"french": "routine", "es": "la rutina", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ine."}, {"french": "fenouil", "es": "el hinojo", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -ouil."}, {"french": "cerise", "es": "la cereza", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ise."}, {"french": "seuil", "es": "el umbral", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -euil."}, {"french": "belle-feuille", "es": "la hoja hermosa", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -euille."}, {"french": "recueil", "es": "la colección / el compendio", "ans": "le", "fb": "Utilizas le porque es una palabra masculina según su terminación en -euil."}, {"french": "feuille", "es": "la hoja", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -euille."}, {"french": "lunette", "es": "la gafa", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -ette."}, {"french": "groseille", "es": "la grosella", "ans": "la", "fb": "Utilizas la porque es una palabra femenina según su terminación en -eille."}];
+
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            
+            const tabMap = { 'inicio': 0, 'teoria': 1, 'practica': 2, 'evaluacion': 3 };
+            tabs[tabMap[tabId]].classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        let practicaItemsShuffled = [];
+        function renderPractica() {
+            practicaItemsShuffled = [...datosPracticaBase].sort(() => Math.random() - 0.5);
+            const container = document.getElementById('practica-container');
+            let html = '';
+            practicaItemsShuffled.forEach((item, index) => {
+                html += `
+                <div class="question-card" id="qcard-${index}">
+                    <div class="question-title">${index + 1}. <strong>${item.french}</strong></div>
+                    <div class="options-container">
+                        <button type="button" class="quiz-btn" onclick="responderPractica(${index}, 'A', this)">A) Femenino</button>
+                        <button type="button" class="quiz-btn" onclick="responderPractica(${index}, 'B', this)">B) Masculino</button>
+                    </div>
+                    <div class="feedback-box" id="fb-${index}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function responderPractica(idx, selectedOpt, btnElement) {
+            const item = practicaItemsShuffled[idx];
+            const card = document.getElementById(`qcard-${idx}`);
+            const buttons = card.querySelectorAll('.quiz-btn');
+            const fb = document.getElementById(`fb-${idx}`);
+
+            buttons.forEach(b => b.classList.remove('correct', 'incorrect'));
+            fb.classList.remove('feedback-success', 'feedback-error');
+            fb.classList.add('show');
+
+            const isCorrect = (selectedOpt === item.correct);
+            if (isCorrect) {
+                btnElement.classList.add('correct');
+                fb.classList.add('feedback-success');
+                fb.innerHTML = `<strong>¡Correcto!</strong> <em>${item.french}</em> (${item.es}) es <strong>${item.gender}</strong> porque su terminación es <strong>${item.ending}</strong>.`;
+            } else {
+                btnElement.classList.add('incorrect');
+                fb.classList.add('feedback-error');
+                fb.innerHTML = `<strong>Incorrecto.</strong> <em>${item.french}</em> (${item.es}) es <strong>${item.gender}</strong> porque su terminación es <strong>${item.ending}</strong>.`;
+            }
+        }
+
+        let evalItemsShuffled = [];
+        function renderEvaluacion() {
+            evalItemsShuffled = [...datosEvaluacionBase].sort(() => Math.random() - 0.5);
+            const container = document.getElementById('eval-container');
+            let html = '';
+            evalItemsShuffled.forEach((item, index) => {
+                html += `
+                <div class="eval-card" id="eval-card-${index}">
+                    <div class="eval-sentence-line">
+                        <span>${index + 1}.</span>
+                        <input type="text" class="eval-inline-input" id="eval-in-${index}" placeholder="le / la / l'" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                        <span><strong>${item.french}</strong></span>
+                    </div>
+                    <div class="eval-fb" id="eval-fb-${index}"></div>
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function calificarEvaluacion() {
+            let correctCount = 0;
+            const total = evalItemsShuffled.length;
+
+            evalItemsShuffled.forEach((item, index) => {
+                const inputEl = document.getElementById(`eval-in-${index}`);
+                const fbEl = document.getElementById(`eval-fb-${index}`);
+                let userVal = inputEl.value.trim().toLowerCase();
+
+                userVal = userVal.replace('’', "'");
+                const expectedAns = item.ans.toLowerCase().replace('’', "'");
+
+                fbEl.style.display = 'block';
+                inputEl.classList.remove('correct-input', 'incorrect-input');
+
+                if (userVal === expectedAns) {
+                    correctCount++;
+                    inputEl.classList.add('correct-input');
+                    fbEl.className = 'eval-fb feedback-success';
+                    fbEl.innerHTML = `<strong>¡Excelente!</strong> <em>${item.french}</em> (${item.es}). ` + item.fb;
+                } else {
+                    inputEl.classList.add('incorrect-input');
+                    fbEl.className = 'eval-fb feedback-error';
+                    fbEl.innerHTML = `<strong>Respuesta esperada: ` + item.ans + `</strong><br><em>${item.french}</em> (${item.es}). ` + item.fb;
+                }
+            });
+
+            const scoreBanner = document.getElementById('eval-score');
+            scoreBanner.style.display = 'block';
+            const percentage = Math.round((correctCount / total) * 100);
+            scoreBanner.innerHTML = `Resultado de la Evaluación: ${correctCount} de ${total} aciertos (${percentage}%)`;
+            scoreBanner.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderPractica();
+            renderEvaluacion();
+        });
+    </script>
+</body>
+</html>
