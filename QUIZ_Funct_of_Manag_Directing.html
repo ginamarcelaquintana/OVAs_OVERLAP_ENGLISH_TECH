@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directing in Management Quiz</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; color: #333; }
+        .quiz-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #1a365d; margin-bottom: 5px; }
+        p.subtitle { text-align: center; color: #4a5568; margin-top: 0; margin-bottom: 25px; }
+        .question-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+        .question-text { font-weight: 600; font-size: 1.05em; margin-bottom: 15px; color: #2d3748; }
+        .options { display: flex; flex-direction: column; gap: 10px; }
+        .option-label { display: flex; align-items: center; background: #fff; padding: 12px 15px; border-radius: 6px; border: 1px solid #cbd5e1; cursor: pointer; transition: background 0.2s; }
+        .option-label:hover { background-color: #edf2f7; }
+        .option-label input { margin-right: 12px; }
+        .feedback { display: none; margin-top: 15px; padding: 12px; border-radius: 6px; font-size: 0.95em; }
+        .feedback.correct { display: block; background-color: #def7ec; border-left: 4px solid #31c48d; color: #03543f; }
+        .feedback.incorrect { display: block; background-color: #fde8e8; border-left: 4px solid #f98080; color: #9b1c1c; }
+        button.submit-btn { display: block; width: 100%; padding: 15px; background-color: #2b6cb0; color: white; border: none; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; margin-top: 20px; }
+        button.submit-btn:hover { background-color: #2c5282; }
+        #score-banner { display: none; text-align: center; padding: 20px; background-color: #ebf8ff; border: 2px solid #bee3f8; border-radius: 8px; margin-bottom: 25px; font-size: 1.3em; font-weight: bold; color: #2b6cb0; }
+    </style>
+</head>
+<body>
+
+<div class="quiz-container">
+    <h1>Directing in Management Quiz</h1>
+    <p class="subtitle">Functions of Management: Listening Comprehension Practice</p>
+    
+    <div id="score-banner"></div>
+
+    <form id="quiz-form">
+        <!-- Q1 -->
+        <div class="question-card" id="q1">
+            <div class="question-text">1. According to the speaker, when team members are constantly busy but deadlines are missed and nothing gets done, what is the core issue?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans1" value="A"> A) A lack of professional talent in the workforce</label>
+                <label class="option-label"><input type="radio" name="ans1" value="B"> B) A directing problem within management</label>
+                <label class="option-label"><input type="radio" name="ans1" value="C"> C) An insufficient corporate budget</label>
+                <label class="option-label"><input type="radio" name="ans1" value="D"> D) A failure in the recruitment software</label>
+            </div>
+            <div class="feedback" id="fb1"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-card" id="q2">
+            <div class="question-text">2. Along with Directing, which other four functions make up the traditional five functions of management mentioned in the video?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans2" value="A"> A) Marketing, accounting, financing, and selling</label>
+                <label class="option-label"><input type="radio" name="ans2" value="B"> B) Hiring, firing, negotiating, and budgeting</label>
+                <label class="option-label"><input type="radio" name="ans2" value="C"> C) Planning, organizing, staffing, and controlling</label>
+                <label class="option-label"><input type="radio" name="ans2" value="D"> D) Innovating, producing, distributing, and auditing</label>
+            </div>
+            <div class="feedback" id="fb2"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-card" id="q3">
+            <div class="question-text">3. In simple terms, how does the video define the primary purpose of directing?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans3" value="A"> A) Imposing strict authority and bossing employees around</label>
+                <label class="option-label"><input type="radio" name="ans3" value="B"> B) How a manager gets people to work toward a common goal</label>
+                <label class="option-label"><input type="radio" name="ans3" value="C"> C) Calculating the annual balance sheet of an enterprise</label>
+                <label class="option-label"><input type="radio" name="ans3" value="D"> D) Designing the physical layout of an office space</label>
+            </div>
+            <div class="feedback" id="fb3"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-card" id="q4">
+            <div class="question-text">4. What analogy does the speaker use to illustrate the role of a manager during directing?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans4" value="A"> A) An orchestra conductor coordinating different instruments</label>
+                <label class="option-label"><input type="radio" name="ans4" value="B"> B) An architect designing a blueprint for construction workers</label>
+                <label class="option-label"><input type="radio" name="ans4" value="C"> C) A film director telling actors when to move, how to feel, and why the scene matters</label>
+                <label class="option-label"><input type="radio" name="ans4" value="D"> D) An air traffic controller landing commercial airplanes</label>
+            </div>
+            <div class="feedback" id="fb4"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-card" id="q5">
+            <div class="question-text">5. Regarding the element of Leadership, what is the manager expected to do to influence team performance?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans5" value="A"> A) Give lengthy theoretical lectures during weekly meetings</label>
+                <label class="option-label"><input type="radio" name="ans5" value="B"> B) Lead by example, because employees observe what managers do, not just what they say</label>
+                <label class="option-label"><input type="radio" name="ans5" value="C"> C) Delegate all critical decision-making processes to senior team members</label>
+                <label class="option-label"><input type="radio" name="ans5" value="D"> D) Focus exclusively on verbal instructions while ignoring personal conduct</label>
+            </div>
+            <div class="feedback" id="fb5"></div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-card" id="q6">
+            <div class="question-text">6. How is effective Communication characterized in the context of directing?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans6" value="A"> A) Unidirectional commands sent through formal memos</label>
+                <label class="option-label"><input type="radio" name="ans6" value="B"> B) Strict and detailed manuals without feedback channels</label>
+                <label class="option-label"><input type="radio" name="ans6" value="C"> C) Clear, simple, two-way communication that involves listening and explaining</label>
+                <label class="option-label"><input type="radio" name="ans6" value="D"> D) Informal rumors shared during coffee breaks</label>
+            </div>
+            <div class="feedback" id="fb6"></div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-card" id="q7">
+            <div class="question-text">7. According to the video, what does proper Supervision mean in modern managerial directing?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans7" value="A"> A) Micromanaging every individual task and minute of the workday</label>
+                <label class="option-label"><input type="radio" name="ans7" value="B"> B) Checking in, removing roadblocks, and ensuring work moves in the right direction</label>
+                <label class="option-label"><input type="radio" name="ans7" value="C"> C) Installing surveillance cameras in the production facilities</label>
+                <label class="option-label"><input type="radio" name="ans7" value="D"> D) Penalizing workers immediately whenever an error occurs</label>
+            </div>
+            <div class="feedback" id="fb7"></div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question-card" id="q8">
+            <div class="question-text">8. In the real-world example of a sales team missing its monthly target, what distinguishes an effective manager from a weak manager?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans8" value="A"> A) The effective manager simply tells the team to "try harder"</label>
+                <label class="option-label"><input type="radio" name="ans8" value="B"> B) The effective manager replaces underperforming workers with new employees</label>
+                <label class="option-label"><input type="radio" name="ans8" value="C"> C) The effective manager identifies obstacles, sets clear daily targets, celebrates small wins, and conducts brief check-ins</label>
+                <label class="option-label"><input type="radio" name="ans8" value="D"> D) The effective manager increases the sales quota to create higher pressure</label>
+            </div>
+            <div class="feedback" id="fb8"></div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question-card" id="q9">
+            <div class="question-text">9. Why is directing described as the fundamental bridge between planning and real-life execution?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans9" value="A"> A) Because plans execute automatically without needing day-to-day guidance</label>
+                <label class="option-label"><input type="radio" name="ans9" value="B"> B) Because even with the right resources and strategy, everything falls apart without daily guidance</label>
+                <label class="option-label"><input type="radio" name="ans9" value="C"> C) Because directing completely replaces the need for strategic planning</label>
+                <label class="option-label"><input type="radio" name="ans9" value="D"> D) Because execution requires legal contracts rather than managerial presence</label>
+            </div>
+            <div class="feedback" id="fb9"></div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question-card" id="q10">
+            <div class="question-text">10. Which management function does the speaker suggest studying next because it goes "hand in hand" with directing?</div>
+            <div class="options">
+                <label class="option-label"><input type="radio" name="ans10" value="A"> A) Controlling</label>
+                <label class="option-label"><input type="radio" name="ans10" value="B"> B) Staffing</label>
+                <label class="option-label"><input type="radio" name="ans10" value="C"> C) Accounting</label>
+                <label class="option-label"><input type="radio" name="ans10" value="D"> D) Budgeting</label>
+            </div>
+            <div class="feedback" id="fb10"></div>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="checkAnswers()">Submit Quiz & Check Results</button>
+    </form>
+</div>
+
+<script>
+    const keys = {
+        ans1: { correct: 'B', exp: 'Correct! The speaker emphasizes that missing deadlines when everyone is busy is not a talent problem, but a directing problem.' },
+        ans2: { correct: 'C', exp: 'Correct! The five classical functions mentioned are planning, organizing, staffing, directing, and controlling.' },
+        ans3: { correct: 'B', exp: 'Correct! Directing is defined as how a manager gets people to work toward a common goal.' },
+        ans4: { correct: 'C', exp: 'Correct! The video compares a manager to a film director guiding the actors.' },
+        ans5: { correct: 'B', exp: 'Correct! Leadership means leading by example; teams follow what leaders do, not just what they say.' },
+        ans6: { correct: 'C', exp: 'Correct! Directing requires clear, two-way communication with listening and explaining.' },
+        ans7: { correct: 'B', exp: 'Correct! Supervision is about checking in, clearing roadblocks, and aligning direction, not micromanagement.' },
+        ans8: { correct: 'C', exp: 'Correct! The competent manager sets daily targets, identifies hurdles, celebrates milestones, and follows up.' },
+        ans9: { correct: 'B', exp: 'Correct! Without active daily directing, even well-planned strategies with great talent fail.' },
+        ans10: { correct: 'B', exp: 'Correct! Staffing is the complementary function highlighted at the end: "You cannot direct a team you have not built."' }
+    };
+
+    function checkAnswers() {
+        let score = 0;
+        const total = 10;
+
+        for (let i = 1; i <= total; i++) {
+            const fieldName = 'ans' + i;
+            const selected = document.querySelector(`input[name="${fieldName}"]:checked`);
+            const fbBox = document.getElementById('fb' + i);
+
+            if (selected) {
+                if (selected.value === keys[fieldName].correct) {
+                    score++;
+                    fbBox.className = 'feedback correct';
+                    fbBox.innerHTML = `<strong>Correct!</strong> ${keys[fieldName].exp}`;
+                } else {
+                    fbBox.className = 'feedback incorrect';
+                    fbBox.innerHTML = `<strong>Incorrect.</strong> The correct answer is option ${keys[fieldName].correct}.`;
+                }
+            } else {
+                fbBox.className = 'feedback incorrect';
+                fbBox.innerHTML = `<strong>Not answered.</strong> The correct answer is option ${keys[fieldName].correct}.`;
+            }
+        }
+
+        const banner = document.getElementById('score-banner');
+        banner.style.display = 'block';
+        banner.innerHTML = `Final Score: ${score} / ${total} (${(score / total) * 100}%)`;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
